@@ -1,7 +1,7 @@
 <div>
-Home Template
+Choose a Quiz Below
 </div>
 <br><br>
 <div ng-repeat="quiz in quizzes">
-    <img ng-src="quiz.picture" alt="Quiz" >
+    <a ui-sref="Quiz({quizBriefName: quiz.briefName})"><img ng-src="{{quiz.picture}}" alt="Quiz" width="200px" ></a>
 </div>

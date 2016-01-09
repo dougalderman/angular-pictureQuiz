@@ -8,27 +8,17 @@ angular.module('pictureQuiz', ['ui.router'])
       .otherwise('/');
 
       $stateProvider
-  	    .state('home', {
+  	    .state('Home', {
   			    templateUrl: 'html/routes/homeTmpl.html',
   			    url: '/',
-            controller: 'homeCtrl',
-//            resolve: {
-//              quizData: function(homeService) {
-//                return homeService.getQuizzes(dataUrl+'quizzes.json');
-//              }
-//            }
-  		  })
-        .state('quiz', {
+                controller: 'homeCtrl'
+  		})
+        .state('Quiz', {
   			    templateUrl: 'html/routes/quizTmpl.html',
   			    url: '/quiz/:quizBriefName',
             controller: 'quizCtrl',
-            resolve: {
-              quizData: function(quizService, $stateParams) {
-                return quizService.getQuizData(dataUrl + $stateParams.quizBriefName + '.json');
-              }
-            }
-  		  })
-        .state('results', {
+        })
+        .state('Results', {
             templateUrl: 'html/routes/resultsTmpl.html',
             url: '/results',
             controller: 'resultsCtrl'
