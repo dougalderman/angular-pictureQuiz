@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="pictureQuiz">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Picture Quiz</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+           
+     <div ui-view></div>
+
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/homeCtrl.js"></script>
+    <script src="js/controllers/quizCtrl.js"></script>
+    <script src="js/controllers/resultsCtrl.js"></script>
+    <script src="js/directives/pictureQuestionTrueFalse.js"></script>
+    <script src="js/directives/pictureQuestionMultipleChoice.js"></script>
+    <script src="js/directives/pictureQuestionShortAnswer.js"></script>
+    <script src="js/directives/pictureAnswer.js"></script>
+    <script src="js/directives/textMultipleChoice.js"></script>
+    <script src="js/directives/textTrueFalse.js"></script>
+    <script src="js/directives/textShortAnswer.js"></script>
+    <script src="js/services/quizService.js"></script>
+    <script src="js/services/homeService.js"></script>
+</body>
+
+</html>

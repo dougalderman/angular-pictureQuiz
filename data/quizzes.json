@@ -1,0 +1,10 @@
+{
+  "quizzes" : [
+      {
+        "briefName": 	"presidents",
+        "title":      "American Presidents",
+        "picture":	"images/George_Washington.jpg",
+        "description": "General knowledge about American presidents"
+      }
+   ]
+}

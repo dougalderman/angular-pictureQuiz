@@ -1,0 +1,117 @@
+{
+  "briefName": 	"presidents",
+  "title":      "American Presidents",
+  "config":{
+      "randomizeQuestions": true,
+      "autoAdvance": false
+    },
+  "questions": [
+    {
+      "id":      1,
+      "question": "This president pictured was the fourth president",
+	  "pictureQuestion":  "images/Thomas_Jefferson.jpg",
+      "type":     "trueFalse",
+      "correctAnswer":   false
+    },
+   	{
+      "id":      2,
+      "question": "Select the year Franklin D. Roosevelt first took office as president",
+      "type":     "multipleChoice",
+	  "options": [
+            { "id": "a", "answer": 1932},
+            { "id": "b", "answer": 1929},
+            { "id": "c", "answer": 1935},
+            { "id": "d", "answer": 1933}
+	  ],		
+      "correctAnswer": "c",
+    },
+	{
+      "id":      3,
+      "question": "Select the President who was NOT assassinated while in office",
+      "type":     "multipleChoice",
+	  "options": [
+            { "id": "a", "pictureAnswer": "images/William_McKinley.jpg"},
+            { "id": "b", "pictureAnswer": "images/Abraham_Lincoln.jpg"},
+            { "id": "c", "pictureAnswer": "images/Grover_Cleveland.jpg" },
+            { "id": "d", "pictureAnswer": "images/John_F_Kennedy.jpg"}
+	  ],		
+      "correctAnswer": "c"
+    },
+	{
+      "id":      4,
+      "question": "Give the first and last name of the president who said 'Speak softly and carry a big stick'",
+      "type":     "shortAnswer",
+	  "correctAnswer": [
+		"Ted Roosevelt",
+		"Teddy Roosevelt",
+		"Theodore Roosevelt"
+	  ]
+    },
+	{
+      "id":      5,
+      "question": "Before he was a U.S. president, this man was president of what university?",
+	  "pictureQuestion":  "images/Woodrow_Wilson.jpg",
+      "type":     "multipleChoice",
+	  "options": [
+            { "id": "a", "answer": "Harvard"},
+            { "id": "b", "answer": "Princeton"},
+            { "id": "c", "answer": "Yale"},
+            { "id": "d", "answer": "Columbia"}
+	  ],		
+	  "correctAnswer": "b"
+    },
+	{
+      "id":      6,
+      "question": "Give the first and last name of this president",
+	  "pictureQuestion":  "images/Franlin_Pierce.jpg",
+      "type":     "shortAnswer",
+	  "correctAnswer": "Franklin Pierce" 
+    },
+	  {
+      "id":      7,
+      "question": "The Cuban Missle Crisis occurred while Kennedy was president",
+	  "type":     "trueFalse",
+      "correctAnswer":   true
+    },
+	{
+      "id":      8,
+      "question": "Select the President who was impeached",
+      "type":     "multipleChoice",
+	  "options": [
+            { "id": "a", "pictureAnswer": "images/George_W_Bush.jpg"},
+            { "id": "e", "pictureAnswer": "images/James_Polk.jpg"},   
+            { "id": "b", "pictureAnswer": "images/Richard_Nixon.jpg"},
+            { "id": "c", "pictureAnswer": "images/Andrew_Johnson.jpg" },
+            { "id": "d", "pictureAnswer": "images/Andrew_Jackson.jpg"}
+                                       
+	  ],		
+      "correctAnswer": "c"
+    },
+	{
+      "id":      9,
+      "question": "Which president(s) lost the popular vote but was elected anyway",
+      "type":     "multipleChoice",
+	  "options": [
+            { "id": "a", "answer": "John Quincy Adams"},
+            { "id": "b", "answer": "Harry Truman" },
+            { "id": "c", "answer": "John Adams"},
+			{ "id": "d", "answer": "George W. Bush"},
+			{ "id": "e", "answer": "a and d"},
+			{ "id": "f", "answer": "a, b and d"}
+	  ],		
+      "correctAnswer": "e"
+    },
+	{
+      "id":      10,
+      "question": "What war occurred while this president was in office?",
+	  "pictureQuestion":  "images/James_Polk.jpg",
+      "type":     "multipleChoice",
+	  "options": [
+            { "id": "a", "answer": "World War I"},
+            { "id": "b", "answer": "Mexican-American War"},
+            { "id": "c", "answer": "Spanish-American War"},
+            { "id": "d", "answer": "Korean War"}
+	  ],		
+	  "correctAnswer": "b"
+    }
+}
