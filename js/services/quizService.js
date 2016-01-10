@@ -1,5 +1,5 @@
 angular.module('pictureQuiz')
-.service('quizService', function ($http) {
+.service('quizService', function ($http, $q) {
     
     this.getQuizData = function(quizUrl) {
         return $http({
@@ -20,6 +20,17 @@ angular.module('pictureQuiz')
             questions[j] = temp;
         }
         return questions;
+    }
+    
+    this.checkAllQuestionsAnswered = function(numQuestions, userCorrect) {
+        var deferred = $q.defer();
+       
+        if (numQuestions === userCorrect.length) {
+           deferred.resolve();
+        } 
+        
+        return deferred.promise;
+        
     }
 
 });

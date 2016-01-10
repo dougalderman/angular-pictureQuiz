@@ -7,14 +7,14 @@
     },
   "questions": [
     {
-      "id":      1,
+      "id":      0,
       "question": "This president pictured was the fourth president",
 	  "pictureQuestion":  "images/Thomas_Jefferson.jpg",
       "type":     "pictureQuestionTrueFalse",
       "correctAnswer":   false
     },
    	{
-      "id":      2,
+      "id":      1,
       "question": "Select the year Franklin D. Roosevelt first took office as president",
       "type":     "textMultipleChoice",
 	  "options": [
@@ -26,7 +26,7 @@
       "correctAnswer": "c"
     },
 	{
-      "id":      3,
+      "id":      2,
       "question": "Select the President who was NOT assassinated while in office",
       "type":     "pictureAnswer",
 	  "options": [
@@ -38,7 +38,7 @@
       "correctAnswer": "c"
     },
 	{
-      "id":      4,
+      "id":      3,
       "question": "Give the first and last name of the president who said 'Speak softly and carry a big stick'",
       "type":     "textShortAnswer",
 	  "correctAnswer": [
@@ -48,7 +48,7 @@
 	  ]
     },
 	{
-      "id":      5,
+      "id":      4,
       "question": "Before he was a U.S. president, this man was president of what university?",
 	  "pictureQuestion":  "images/Woodrow_Wilson.jpg",
       "type":     "pictureQuestionMultipleChoice",
@@ -61,20 +61,20 @@
 	  "correctAnswer": "b"
     },
 	{
-      "id":      6,
+      "id":      5,
       "question": "Give the first and last name of this president",
 	  "pictureQuestion":  "images/Franlin_Pierce.jpg",
       "type":     "pictureQuestionShortAnswer",
 	  "correctAnswer": "Franklin Pierce" 
     },
 	{
-      "id":      7,
+      "id":      6,
       "question": "The Cuban Missle Crisis occurred while Kennedy was president",
 	  "type":     "textTrueFalse",
       "correctAnswer":   true
     },
 	{
-      "id":      8,
+      "id":      7,
       "question": "Select the President who was impeached",
       "type":     "pictureAnswer",
 	  "options": [
@@ -88,7 +88,7 @@
       "correctAnswer": "c"
     },
 	{
-      "id":      9,
+      "id":      8,
       "question": "Which president(s) lost the popular vote but was elected anyway",
       "type":     "textMultipleChoice",
 	  "options": [
@@ -102,7 +102,7 @@
       "correctAnswer": "e"
     },
 	{
-      "id":      10,
+      "id":      9,
       "question": "What war occurred while this president was in office?",
 	  "pictureQuestion":  "images/James_Polk.jpg",
       "type":     "pictureQuestionMultipleChoice",

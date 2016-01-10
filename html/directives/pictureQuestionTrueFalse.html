@@ -5,9 +5,16 @@ pictureQuestionTrueFalse template
 <div>{{question}}</div>
 <br><br>
 <form>
-    <input type="radio" name="answer" value="true">True<br>
-    <input type="radio" name="answer" value="false">False<br>
-    <button ng-hide="autoAdvance">Submit</button>
+    <input type="radio" ng-click="processUserInput(answer, 'fromRadio')" ng-model="answer" value="true">True<br>
+    <input type="radio" ng-click="processUserInput(answer, 'fromRadio')" ng-model="answer" value="false">False<br>
+    <br>
+    <input type="submit" ng-hide="autoAdvance" ng-click="processUserInput(answer, 'fromButton')">
 </form>
-
+<br><br>
+<div ng-show="userAnswered && userAnsweredCorrectly">
+    You got it right!! Great job!!
+</div>
+<div ng-show="userAnswered && !userAnsweredCorrectly">
+    Sorry, the correct answer is "{{correctAnswer}}"
+</div>
 
