@@ -1,3 +1,17 @@
 <div>
 Quiz Template
 </div>
+
+<picture-answer ng-show="questionType === 'pictureAnswer'"></picture-answer>
+
+<picture-question-multiple-choice ng-show="questionType === 'pictureQuestionMultipleChoice'"></picture-question-multiple-choice>
+
+<picture-question-short-answer ng-show="questionType === 'pictureQuestionShortAnswer'"></picture-question-short-answer>
+
+<picture-question-true-false ng-show="questionType === 'pictureQuestionTrueFalse'"></picture-question-true-false>
+
+<text-multiple-choice ng-show="questionType === 'textMultipleChoice'"></text-multiple-choice>
+
+<text-short-answer ng-show="questionType === 'textShortAnswer'"></text-short-answer>
+
+<text-true-false ng-show="questionType === 'textTrueFalse'"></text-true-false>

@@ -1,8 +1,8 @@
 angular.module('pictureQuiz')
-.directive('textTruFalse', function() {
+.directive('textTrueFalse', function() {
     return {
         restrict: 'E',
-        templateUrl: 'html/directives/textTrueFalse', 
+        templateUrl: 'html/directives/textTrueFalse.html', 
         scope: {
             
         },

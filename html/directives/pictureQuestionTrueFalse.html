@@ -1,3 +1,13 @@
 <div>
 pictureQuestionTrueFalse template
 </div>
+<div><img ng-src = "{{pictureQuestion}}"</div>
+<div>{{question}}</div>
+<br><br>
+<form>
+    <input type="radio" name="answer" value="true">True<br>
+    <input type="radio" name="answer" value="false">False<br>
+    <button ng-hide="autoAdvance">Submit</button>
+</form>
+
+

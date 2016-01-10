@@ -2,7 +2,7 @@ angular.module('pictureQuiz')
 .directive('textMultipleChoice', function() {
     return {
         restrict: 'E',
-        templateUrl: 'html/directives/textMultipleChoice', 
+        templateUrl: 'html/directives/textMultipleChoice.html', 
         scope: {
             
         },

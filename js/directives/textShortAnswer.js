@@ -2,7 +2,7 @@ angular.module('pictureQuiz')
 .directive('textShortAnswer', function() {
     return {
         restrict: 'E',
-        templateUrl: 'html/directives/textShortAnswer', 
+        templateUrl: 'html/directives/textShortAnswer.html', 
         scope: {
             
         },
