@@ -34,7 +34,7 @@ angular.module('pictureQuiz')
                         $scope.userCorrect[$scope.questionId] = false;
                         $scope.userAnsweredCorrectly = false;
                     }
-                    $scope.getNextQuestion();
+                    /* $scope.getNextQuestion(); */
                 }
             }    
          

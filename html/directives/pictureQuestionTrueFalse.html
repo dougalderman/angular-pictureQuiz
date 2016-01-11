@@ -17,4 +17,6 @@ pictureQuestionTrueFalse template
 <div ng-show="userAnswered && !userAnsweredCorrectly">
     Sorry, the correct answer is "{{correctAnswer}}"
 </div>
+<br>
+<button ng-show="userAnswered" ng-click="getNextQuestion()">Next</button>
 

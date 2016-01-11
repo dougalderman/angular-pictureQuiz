@@ -10,7 +10,7 @@ Quiz Template
 
 <picture-question-true-false auto-advance="autoAdvance" question-id="questionId" question="{{question}}" correct-answer="{{correctAnswer}}" picture-question="{{pictureQuestion}}" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion(questionId)" ng-show="questionType === 'pictureQuestionTrueFalse'"></picture-question-true-false>
 
-<text-multiple-choice ng-show="questionType === 'textMultipleChoice'"></text-multiple-choice>
+<text-multiple-choice auto-advance="autoAdvance" question-id="questionId" question="{{question}}" options= "options" correct-answer="{{correctAnswer}}" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion(questionId)"ng-show="questionType === 'textMultipleChoice'"></text-multiple-choice>
 
 <text-short-answer ng-show="questionType === 'textShortAnswer'"></text-short-answer>
 

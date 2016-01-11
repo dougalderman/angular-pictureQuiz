@@ -1,3 +1,22 @@
 <div>
 textMultipleChoice template
 </div>
+<br>
+<div>{{question}}</div>
+<br><br>
+<form>
+    <span ng-repeat = "option in options">
+    <input type="radio" ng-click="processUserInput(answer, 'fromRadio')" ng-model="answer" value="option.id" name="selection">{{option.answer}}<br>
+    </span>
+    
+    <input type="submit" ng-hide="autoAdvance" ng-click="processUserInput(answer, 'fromButton')">
+</form>
+<br><br>
+<div ng-show="userAnswered && userAnsweredCorrectly">
+    You got it right!! Great job!!
+</div>
+<div ng-show="userAnswered && !userAnsweredCorrectly">
+    Sorry, the correct answer is "{{correctAnswer}}"
+</div>
+<br><br>
+<button ng-show="userAnswered" ng-click="getNextQuestion()">Next</button>

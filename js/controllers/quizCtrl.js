@@ -60,11 +60,13 @@ angular.module('pictureQuiz')
                     $scope.correctAnswer = $scope.questions[i + 1].correctAnswer;
                     $scope.pictureQuestion = $scope.questions[i + 1].pictureQuestion;
                     $scope.options = $scope.questions[i + 1].options; 
+                    $scope.userAnswered = false;
+                    $scope.userAnsweredCorrectly = false;
                     return;
                  }
                  else {
                     $scope.endTimeObject = new Date();
-                    $scope.secondsElapsed = ($scope.startTimeObject.getTime() - $scope.endTimeObject.getTime()) / 60;
+                    $scope.secondsElapsed = ($scope.startTimeObject.getTime() - $scope.endTimeObject.getTime()) / 1000;
                     $state.go('Results');
                  }
              }
