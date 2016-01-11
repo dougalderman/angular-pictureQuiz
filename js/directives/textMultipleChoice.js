@@ -4,7 +4,9 @@ angular.module('pictureQuiz')
         restrict: 'E',
         templateUrl: 'html/directives/textMultipleChoice.html', 
         scope: {
-            autoAdvance: '=',
+            autoSubmit: '=',
+            numQuestions: '@',
+            currentQuestion: '@',
             questionId: '=',
             question: '@',
             options: '=',
@@ -16,27 +18,30 @@ angular.module('pictureQuiz')
 
         },
         link: function(scope, elem, attrs) {
-            console.log("In text multiple choice link");
+          
         },
         controller: function($scope) {
-            console.log("In text multiple choice controller");
-            console.log("in pictureQuestionTrueFalse controller")
             $scope.userAnswered = false;
             $scope.userAnsweredCorrectly = false;
             $scope.processUserInput = function(selection, whereFrom) {
-                var temp = ((whereFrom === 'fromRadio') && $scope.autoAdvance);
-                var temp2 = ((whereFrom === 'fromButton') && !$scope.autoAdvance);
-                if (temp || temp2) {
-                    $scope.userAnswered = true;
-                    if (selection === $scope.correctAnswer) {
-                        $scope.userCorrect[$scope.questionId] = true;
-                        $scope.userAnsweredCorrectly = true;
+                if (!$scope.userAnswered) { // if haven't already answered question
+                    
+                    if (selection) // if selection has value
+                        $scope.selection = selection;
+                    var temp = ((whereFrom === 'fromRadio') && $scope.autoSubmit);
+                    var temp2 = ((whereFrom === 'fromButton') && !$scope.autoSubmit);
+                    if (temp || temp2) {
+                        $scope.userAnswered = true;
+                        if ($scope.selection === $scope.correctAnswer) {
+                            $scope.userCorrect[$scope.questionId] = true;
+                            $scope.userAnsweredCorrectly = true;
+                        }
+                        else {
+                            $scope.userCorrect[$scope.questionId] = false;
+                            $scope.userAnsweredCorrectly = false;
+                        }
+
                     }
-                    else {
-                        $scope.userCorrect[$scope.questionId] = false;
-                        $scope.userAnsweredCorrectly = false;
-                    }
-                    /* $scope.getNextQuestion(); */
                 }
             }    
          

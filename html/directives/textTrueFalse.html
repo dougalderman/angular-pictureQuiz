@@ -1,3 +1,23 @@
 <div>
 textTrueFalse template
 </div>
+<br>
+<div>Question {{currentQuestion}} of {{numQuestions}}</div>
+<br>
+<div>{{question}}</div>
+<br><br>
+<form ng-submit="processUserInput(answer, 'fromButton')">
+    <input type="radio" ng-click="processUserInput(answer, 'fromRadio')" ng-model="answer" value="true">True<br>
+    <input type="radio" ng-click="processUserInput(answer, 'fromRadio')" ng-model="answer" value="false">False<br>
+    <br>
+    <input type="submit" ng-hide="autoSubmit">
+</form>
+<br><br>
+<div ng-show="userAnswered && userAnsweredCorrectly">
+    You got it right!! Great job!!
+</div>
+<div ng-show="userAnswered && !userAnsweredCorrectly">
+    Sorry, the correct answer is "{{correctAnswer}}"
+</div>
+<br>
+<button ng-show="userAnswered" ng-click="getNextQuestion()">Next</button>

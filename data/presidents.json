@@ -2,8 +2,8 @@
   "briefName": 	"presidents",
   "title":      "American Presidents",
   "config":{
-      "randomizeQuestions": true,
-      "autoAdvance": false
+      "randomizeQuestionSequence": true,
+      "autoSubmit": false
     },
   "questions": [
     {
@@ -11,19 +11,19 @@
       "question": "This president pictured was the fourth president",
 	  "pictureQuestion":  "images/Thomas_Jefferson.jpg",
       "type":     "pictureQuestionTrueFalse",
-      "correctAnswer":   false
+      "correctAnswer": "false"
     },
    	{
       "id":      1,
       "question": "Select the year Franklin D. Roosevelt first took office as president",
       "type":     "textMultipleChoice",
 	  "options": [
-            { "id": "a", "answer": 1932},
-            { "id": "b", "answer": 1929},
-            { "id": "c", "answer": 1935},
-            { "id": "d", "answer": 1933}
+            { "id": "a", "answer": "1932"},
+            { "id": "b", "answer": "1929"},
+            { "id": "c", "answer": "1935"},
+            { "id": "d", "answer": "1933"}
 	  ],		
-      "correctAnswer": "d"
+      "correctAnswer": "1933"
     },
 	{
       "id":      2,
@@ -41,7 +41,7 @@
       "id":      3,
       "question": "Give the first and last name of the president who said 'Speak softly and carry a big stick'",
       "type":     "textShortAnswer",
-	  "correctAnswer": [
+	  "correctAnswerArray": [
 		"Ted Roosevelt",
 		"Teddy Roosevelt",
 		"Theodore Roosevelt"
@@ -58,20 +58,22 @@
             { "id": "c", "answer": "Yale"},
             { "id": "d", "answer": "Columbia"}
 	  ],		
-	  "correctAnswer": "b"
+	  "correctAnswer": "Princeton"
     },
 	{
       "id":      5,
       "question": "Give the first and last name of this president",
-	  "pictureQuestion":  "images/Franlin_Pierce.jpg",
+	  "pictureQuestion":  "images/Franklin_Pierce.jpg",
       "type":     "pictureQuestionShortAnswer",
-	  "correctAnswer": "Franklin Pierce" 
+	  "correctAnswerArray": [
+          "Franklin Pierce"
+      ]
     },
 	{
       "id":      6,
       "question": "The Cuban Missle Crisis occurred while Kennedy was president",
 	  "type":     "textTrueFalse",
-      "correctAnswer":   true
+      "correctAnswer":  "true"
     },
 	{
       "id":      7,
@@ -79,13 +81,13 @@
       "type":     "pictureAnswer",
 	  "options": [
             { "id": "a", "pictureAnswer": "images/George_W_Bush.jpg"},
-            { "id": "e", "pictureAnswer": "images/James_Polk.jpg"},   
-            { "id": "b", "pictureAnswer": "images/Richard_Nixon.jpg"},
-            { "id": "c", "pictureAnswer": "images/Andrew_Johnson.jpg" },
-            { "id": "d", "pictureAnswer": "images/Andrew_Jackson.jpg"}
+            { "id": "b", "pictureAnswer": "images/James_Polk.jpg"},   
+            { "id": "c", "pictureAnswer": "images/Richard_Nixon.jpg"},
+            { "id": "d", "pictureAnswer": "images/Andrew_Johnson.jpg" },
+            { "id": "e", "pictureAnswer": "images/Andrew_Jackson.jpg"}
                                        
 	  ],		
-      "correctAnswer": "c"
+      "correctAnswer": "d"
     },
 	{
       "id":      8,
@@ -96,10 +98,10 @@
             { "id": "b", "answer": "Harry Truman" },
             { "id": "c", "answer": "John Adams"},
 			{ "id": "d", "answer": "George W. Bush"},
-			{ "id": "e", "answer": "a and d"},
-			{ "id": "f", "answer": "a, b and d"}
+			{ "id": "e", "answer": "John Quincy Adams and George W. Bush"},
+			{ "id": "f", "answer": "John Quincy Adams, Harry Truman, and George W. Bush"}
 	  ],		
-      "correctAnswer": "e"
+      "correctAnswer": "John Quincy Adams and George W. Bush"
     },
 	{
       "id":      9,
@@ -112,7 +114,7 @@
             { "id": "c", "answer": "Spanish-American War"},
             { "id": "d", "answer": "Korean War"}
 	  ],		
-	  "correctAnswer": "b"
+	  "correctAnswer": "Mexican-American War"
     }
   ]
 }

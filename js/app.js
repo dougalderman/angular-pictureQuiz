@@ -21,6 +21,10 @@ angular.module('pictureQuiz', ['ui.router'])
         .state('Results', {
             templateUrl: 'html/routes/resultsTmpl.html',
             url: '/results',
+            params : {
+                secondsElapsed: 0,
+                userCorrectArray: [],
+            },
             controller: 'resultsCtrl'
         });
 

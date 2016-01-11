@@ -1,14 +1,17 @@
 <div>
 pictureQuestionTrueFalse template
 </div>
+<br>
+<div>Question {{currentQuestion}} of {{numQuestions}}</div>
+<br>
 <div><img ng-src = "{{pictureQuestion}}"</div>
 <div>{{question}}</div>
 <br><br>
-<form>
+<form ng-submit="processUserInput(answer, 'fromButton')">
     <input type="radio" ng-click="processUserInput(answer, 'fromRadio')" ng-model="answer" value="true">True<br>
     <input type="radio" ng-click="processUserInput(answer, 'fromRadio')" ng-model="answer" value="false">False<br>
     <br>
-    <input type="submit" ng-hide="autoAdvance" ng-click="processUserInput(answer, 'fromButton')">
+    <input type="submit" ng-hide="autoSubmit">
 </form>
 <br><br>
 <div ng-show="userAnswered && userAnsweredCorrectly">

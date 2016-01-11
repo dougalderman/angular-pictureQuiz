@@ -1,3 +1,25 @@
 <div>
 textShortAnswer template
 </div>
+<br>
+<div>Question {{currentQuestion}} of {{numQuestions}}</div>
+<br>
+<div>{{question}}</div>
+<br><br>
+<form ng-submit="processUserInput(answer, 'fromButton')">
+    <input type="text" ng-click="processUserInput(answer, 'fromTextBox')" ng-model="answer" placeholder="First name Last name">
+    <br>
+    <input type="submit" ng-hide="autoSubmit">
+</form>
+<br><br>
+<div ng-show="userAnswered && userAnsweredCorrectly">
+    You got it right!! Great job!!
+</div>
+<div ng-show="userAnswered && !userAnsweredCorrectly">
+    Sorry, 
+    <div ng-repeat = "answer in correctAnswerArray">
+        A correct answer is "{{answer}}"
+    </div>
+</div>
+<br>
+<button ng-show="userAnswered" ng-click="getNextQuestion()">Next</button>

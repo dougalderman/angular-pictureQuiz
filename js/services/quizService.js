@@ -8,7 +8,7 @@ angular.module('pictureQuiz')
         });
     };   
     
-    this.randomizeQuestions = function(questions) {
+    this.randomizeQuestionSequence = function(questions) {
     /*
         Randomize array element order in-place.
         Using Durstenfeld shuffle algorithm.
@@ -22,15 +22,4 @@ angular.module('pictureQuiz')
         return questions;
     }
     
-    this.checkAllQuestionsAnswered = function(numQuestions, userCorrect) {
-        var deferred = $q.defer();
-       
-        if (numQuestions === userCorrect.length) {
-           deferred.resolve();
-        } 
-        
-        return deferred.promise;
-        
-    }
-
 });

@@ -4,4 +4,6 @@ Choose a Quiz Below
 <br><br>
 <div ng-repeat="quiz in quizzes">
     <a ui-sref="Quiz({quizBriefName: quiz.briefName})"><img ng-src="{{quiz.picture}}" alt="Quiz" width="200px" ></a>
+    <p>{{quiz.title}}</p>
+    <p>{{quiz.description}}</p>
 </div>
