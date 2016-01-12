@@ -20,7 +20,6 @@ angular.module('pictureQuiz')
     
     $scope.processQuiz = function() {
         $scope.autoSubmit = $scope.quiz.config.autoSubmit;
-        $scope.quiz.config.randomizeQuestionSequence = false; // take out after testing
         $scope.userCorrect = [];
        
         $scope.questions = $scope.quiz.config.randomizeQuestionSequence ? 

@@ -16,6 +16,11 @@ angular.module('pictureQuiz')
     .catch(function(err) {
         console.log('Error', err);
     });
+    
+//    $scope.rotate = function() {
+//        var elem = angular.element(document.querySelector('.quiz'));
+//        elem.addClass('openDoor');
+//    }
      
     
 });

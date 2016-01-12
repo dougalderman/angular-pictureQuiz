@@ -1,0 +1,22 @@
+{
+  "quizzes" : [
+      {
+        "briefName": 	"presidents",
+        "title":      "American Presidents",
+        "picture":	"images/George_Washington.jpg",
+        "description": "General knowledge about American presidents"
+      },
+      {
+        "briefName": 	"science",
+        "title":      "Basic Science",
+        "picture":	"images/Atom.jpg",
+        "description": "General knowledge about science"
+      },
+      {
+        "briefName": 	"celebrities",
+        "title":      "Celebrities",
+        "picture":	"images/Tom_Cruise.jpg",
+        "description": "General knowledge about celebrities"
+      }
+   ]
+}

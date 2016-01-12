@@ -2,7 +2,7 @@
   "briefName": 	"presidents",
   "title":      "American Presidents",
   "config":{
-      "randomizeQuestionSequence": true,
+      "randomizeQuestionSequence": false,
       "autoSubmit": false
     },
   "questions": [
@@ -11,7 +11,7 @@
       "question": "This president pictured was the fourth president",
 	  "pictureQuestion":  "images/Thomas_Jefferson.jpg",
       "type":     "pictureQuestionTrueFalse",
-      "correctAnswer": "false"
+      "correctAnswer": "False"
     },
    	{
       "id":      1,
@@ -27,7 +27,7 @@
     },
 	{
       "id":      2,
-      "question": "Select the President who was NOT assassinated while in office",
+      "question": "Click on the picture of the President who was NOT assassinated while in office",
       "type":     "pictureAnswer",
 	  "options": [
             { "id": "a", "pictureAnswer": "images/William_McKinley.jpg"},
@@ -73,11 +73,11 @@
       "id":      6,
       "question": "The Cuban Missle Crisis occurred while Kennedy was president",
 	  "type":     "textTrueFalse",
-      "correctAnswer":  "true"
+      "correctAnswer":  "True"
     },
 	{
       "id":      7,
-      "question": "Select the President who was impeached",
+      "question": "Click on the picture of the President who was impeached",
       "type":     "pictureAnswer",
 	  "options": [
             { "id": "a", "pictureAnswer": "images/George_W_Bush.jpg"},

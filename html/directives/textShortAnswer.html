@@ -7,9 +7,9 @@ textShortAnswer template
 <div>{{question}}</div>
 <br><br>
 <form ng-submit="processUserInput(answer, 'fromButton')">
-    <input type="text" ng-click="processUserInput(answer, 'fromTextBox')" ng-model="answer" placeholder="First name Last name">
+    <input type="text" ng-model="answer" placeholder="First name Last name">
     <br>
-    <input type="submit" ng-hide="autoSubmit">
+    <input type="submit">
 </form>
 <br><br>
 <div ng-show="userAnswered && userAnsweredCorrectly">
