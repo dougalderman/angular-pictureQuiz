@@ -1,5 +1,5 @@
 angular.module('pictureQuiz')
-.controller('quizCtrl', function ($scope, quizService, dataUrl, $stateParams, $state) {
+.controller('quizCtrl', function ($scope, quizService, dataUrl, $stateParams, $state, $location, $anchorScroll) {
     
     console.log('in quizCtrl');
     
@@ -19,6 +19,7 @@ angular.module('pictureQuiz')
     });
     
     $scope.processQuiz = function() {
+        $scope.title = $scope.quiz.title;
         $scope.autoSubmit = $scope.quiz.config.autoSubmit;
         $scope.userCorrect = [];
        
@@ -59,6 +60,9 @@ angular.module('pictureQuiz')
             $scope.currentQuestion++;
             $scope.userAnswered = false;
             $scope.userAnsweredCorrectly = false;
+            
+            $scope.gotoTop();
+            
             return;
                  }
          else { // completed all questions
@@ -68,5 +72,14 @@ angular.module('pictureQuiz')
          }
        
     }
+    
+    $scope.gotoTop = function() {
+      // set the location.hash to the id of
+      // the element you wish to scroll to.
+      $location.hash('top');  // top of body
+
+      // call $anchorScroll()
+      $anchorScroll();
+    };
        
 });

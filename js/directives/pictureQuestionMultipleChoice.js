@@ -4,6 +4,7 @@ angular.module('pictureQuiz')
         restrict: 'E',
         templateUrl: 'html/directives/pictureQuestionMultipleChoice.html', 
         scope: {
+            title: '@',
             autoSubmit: '=',
             numQuestions: '@',
             currentQuestion: '@',

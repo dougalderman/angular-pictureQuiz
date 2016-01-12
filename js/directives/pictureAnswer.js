@@ -4,6 +4,7 @@ angular.module('pictureQuiz')
         restrict: 'E',
         templateUrl: 'html/directives/pictureAnswer.html', 
         scope: {
+            title: '@',
             autoSubmit: '=',
             numQuestions: '@',
             currentQuestion: '@',
@@ -14,7 +15,8 @@ angular.module('pictureQuiz')
             userCorrect: '=',
             userAnswered: '=',
             userAnsweredCorrectly: '=',
-            getNextQuestion: '&'
+            getNextQuestion: '&',
+            gotoTop: '&'
         },
         link: function(scope, elem, attrs) {
             
@@ -34,6 +36,7 @@ angular.module('pictureQuiz')
                         $scope.userCorrect[$scope.questionId] = false;
                         $scope.userAnsweredCorrectly = false;
                     }
+                    $scope.gotoTop();
                     
                 }
             }    

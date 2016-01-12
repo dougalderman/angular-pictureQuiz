@@ -79,16 +79,28 @@ html, body {
     padding-left: 5px;
 }
 
+.questionContainer .topLeft {
+    font-family: Georgia, Serif;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 1.5em;
+    color: darkviolet;
+}
+
+
 .questionContainer .topRight {
     font-family: Arial;
     position: absolute;
-    top: 5px;
+    top: 10px;
     right: 5px;
     font-size: 0.9em;
+    color: rgba(3, 0, 139, 0.94);
 }
 
 .questionContainer .picture {
-    padding-top: 10px;
+    padding-top: 20px; 
+    padding-bottom: 10px;
 }
 
 .questionContainer .textQuestion {
@@ -114,6 +126,7 @@ html, body {
 .answerContainer .afterSubmit {
     display: block;
     width: 50%;
+    margin-left: 5px;
 }
 
 .button, button {
@@ -137,10 +150,14 @@ html, body {
   display: flex;
   flex-direction: row;
   height: 350px;
+/*
   justify-content: center;
   align-items: center;
-  width: 90%;
-  margin: 0 auto;
+*/
+  justify-content: flex-start;
+/* align-items: flex-start; */
+  width: 100%;
+  /* margin: 0 auto; */
 }
 
 .pictureAnswerForm {
@@ -148,17 +165,23 @@ html, body {
   flex-direction: row;
   flex-wrap: wrap;
   height: 300px;
+/*
   justify-content: center;
   align-items: center;
-  width: 500px;
-  margin: 0 auto;
+*/
+  justify-content: flex-start;
+  /* align-items: flex-start; */
+  /*width: 500px; */
+  width: 90%;
+  /* margin: 0 auto; */
 }
 
 .pictureAnswers {
   height: 80%;
   display: block;
   text-align: center;
-  width: 30%;
+  /* width: 30%; */
+  width: 20%;
   margin: 0 30px;
 }
 
@@ -169,6 +192,11 @@ html, body {
     top: 20px;
 }
 
-.pictureAnswers:hover {
-    background-color: mediumpurple;
+.pictureAnswers img:hover {
+    cursor: pointer;
+}
+
+.pictureAnswerContainer .afterSubmit {
+    width: 30%;
+    margin-right: 5px; 
 }
