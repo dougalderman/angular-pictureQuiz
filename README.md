@@ -1,4 +1,5 @@
-Angular Picture Quiz
+#Angular Picture Quiz
+
 
 This app is a online quiz with the option of using a picture as part of the question, or pictures as answer options. It allows for multiple choice, short answer, and true-false types questions. There are 3 text-only questions types, 3 picture questions, and one picture answer multiple choice, for a total of 7 question types. 
 
@@ -87,26 +88,33 @@ Each quiz has its own json file with configuration options and specifications of
     
 As can be seen from the config object at the beginning, there are 2 configuration options:
 
-randomizeQuestionSequence--if set to true, uses the Durstenfeld shuffle algorithm to randomize the question sequence. Otherwise shows questions in the order they were specified in the .json file.
-autoSubmit--if set to true, automatically submits client's selection (with the exception of short answers, which wait for user to hit a submit button). Otherwise has user click a submit button after selecting the option (with the exception of picture answers, which are automatically submitted when clicked).
+ - randomizeQuestionSequence--if set to true, uses the Durstenfeld
+	   shuffle algorithm to randomize the question sequence. Otherwise shows questions in the order they were specified in the .json file.
+ - autoSubmit--if set to true, automatically submits client's selection
+   (with the exception of short answers, which wait for user to hit a
+   submit button). Otherwise has user click a submit button after
+   selecting the option (with the exception of picture answers, which
+   are automatically submitted when clicked).
 
 It uses only front-end Javascript frameworks Angular 1.x and Angular UI Router. There are 3 routes and 8 directives.
 
 Routes:
---Home
---Quiz
---Results
+
+ 1. Home
+ 2. Quiz
+ 3. Results
 
 7 Directives corresponding to the different question types:
---pictureAnswer
---pictureQuestionMultipeChoice
---pictureQuestionShortAnswer
---pictureQuestionTrueFalse
---textMultipleChoice
---textShortAnswer
---textTrueFalse
 
-1 Directive (animateOnLoad) to allow the giphy rotation (CSS transform) to occur upon loading the results page.
+ 1. pictureAnswer
+ 2. pictureQuestionMultipeChoice
+ 3. pictureQuestionShortAnswer
+ 4. pictureQuestionTrueFalse
+ 5. textMultipleChoice
+ 6. textShortAnswer
+ 7. textTrueFalse
+
+One directive (animateOnLoad) to allow the giphy rotation (CSS transform) to occur upon loading the results page.
 
 The main UI Router application logic is in app.js:
 
@@ -144,4 +152,20 @@ angular.module('pictureQuiz', ['ui.router', 'ngAnimate'])
 
 });
 ```
-As can be seen from the code, each route has its own controller and template. The home controller and template are fairly straightforward. The quiz controller has the main logic controlling the flow of the quiz, and also interacting with the directives. 
+As can be seen from the code, each route has its own controller and template. 
+
+
+###Home Route
+
+The home controller and template are fairly straightforward. The controller calls a service function to perform an $http request to read the quizzes.json file. It then displays the quiz image, title and description in flex boxes. 
+
+![Sample Home Screen](images/Sample_Home_Screen)
+
+It directs the user to choose a quiz. When the user clicks on the quiz picture, it does a ui-sref link, passing to the quiz controller the brief name of the quiz. 
+
+
+###Quiz Route
+
+The quiz controller first calls a service function to do an $http request to read the name.json file, where 'name' is the quiz name passed as a parameter to this route. It then calls a processQuiz() function which sets some $scope variables. quiz template is a series of 7 element directives. The directives are set to only ng-show when the question type is set to that question type.
+
+> Written with [StackEdit](https://stackedit.io/).## Heading ##
