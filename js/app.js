@@ -1,4 +1,4 @@
-angular.module('pictureQuiz', ['ui.router'])
+angular.module('pictureQuiz', ['ui.router', 'ngAnimate'])
 .constant('dataUrl', {'url': 'data/'})
 .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -22,6 +22,7 @@ angular.module('pictureQuiz', ['ui.router'])
             templateUrl: 'html/routes/resultsTmpl.html',
             url: '/results',
             params : {
+                title: '',
                 secondsElapsed: 0,
                 userCorrectArray: [],
             },

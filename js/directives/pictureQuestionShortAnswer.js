@@ -17,9 +17,6 @@ angular.module('pictureQuiz')
             userAnsweredCorrectly: '=',
             getNextQuestion: '&'
         },
-        link: function(scope, elem, attrs) {
-            
-        },
         controller: function($scope) {
            $scope.userAnswered = false;
             $scope.userAnsweredCorrectly = false;

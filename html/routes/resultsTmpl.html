@@ -1,6 +1,12 @@
-<div>
-Results Template
+<div class="resultsContainer">
+    <div class="topLeft">{{title}} Quiz</div>
+    <br><br>
+    <p>Your score is: <span class="num">{{numCorrect}}</span> correct out of <span class="num">{{numQuestions}}</span> questions, or <span class="num">{{percentCorrect}}%</span>.
+    <br>
+    <p>You completed the test in: <span class="num">{{secondsElapsed}}</span> seconds.</p>
+    <br>
+    Return <a ui-sref="Home">Home</a>
+    <div class="giphy" animate-on-load>
+       <!-- <img ng-src="{{giphyUrl}}">-->
+    </div>
 </div>
-<p>Your score is: {{numCorrect}} correct out of {{numQuestions}} questions.<p>
-<br>
-<p>You completed the test in: {{secondsElapsed}} seconds.</p>

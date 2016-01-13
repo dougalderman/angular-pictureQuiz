@@ -200,3 +200,51 @@ html, body {
     width: 30%;
     margin-right: 5px; 
 }
+
+.resultsContainer {
+    height: 150vh;
+    background-color: rgba(0, 117, 255, 0.66);
+    font-family: Helvetica, sans-serif;
+    position: relative;
+    padding-left: 5px;
+}
+
+.resultsContainer .topLeft {
+    font-family: Georgia, Serif;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        font-size: 1.5em;
+        color: darkviolet;
+}
+
+.resultsContainer p {
+    font-size: 0.8em;
+    color: white;
+}
+
+.resultsContainer span.num {
+    color: rgb(210, 106, 30);
+    font-weight: bold;
+}
+
+.resultsContainer a {
+    text-decoration: none;
+    color: darkgreen;
+}
+
+.resultsContainer .giphy {
+    margin-top: 30px;
+    width: 300px;
+    height: 200px;
+}
+
+.resultsContainer .giphy.ng-enter {
+    transition: transform 7s ease-in;
+    background-image: url("https://media.giphy.com/media/iabcSfUB6VZYc/giphy.gif"); 
+    background-size: cover; 
+}
+
+.resultsContainer .giphy.ng-enter.ng-enter-active {
+    transform: perspective(400px) rotateX(90deg);
+}

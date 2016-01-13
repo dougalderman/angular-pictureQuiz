@@ -68,7 +68,11 @@ angular.module('pictureQuiz')
          else { // completed all questions
              $scope.endTimeObject = new Date();
              $scope.secondsElapsed = Math.floor(($scope.endTimeObject.getTime() - $scope.startTimeObject.getTime()) / 1000);
-             $state.go('Results', {secondsElapsed: $scope.secondsElapsed, userCorrectArray: $scope.userCorrect});
+             $state.go('Results', {
+                 title: $scope.title,
+                 secondsElapsed: $scope.secondsElapsed, 
+                 userCorrectArray: $scope.userCorrect
+             });
          }
        
     }
