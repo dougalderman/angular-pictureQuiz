@@ -83,7 +83,8 @@ Each quiz has its own json file with configuration options and specifications of
     }
   ]
 }
-	
+```	
+    
 As can be seen from the config object at the beginning, there are 2 configuration options:
 
 randomizeQuestionSequence--if set to true, uses the Durstenfeld shuffle algorithm to randomize the question sequence. Otherwise shows questions in the order they were specified in the .json file.
