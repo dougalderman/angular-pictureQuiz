@@ -159,7 +159,7 @@ As can be seen from the code, each route has its own controller and template.
 
 The home controller and template are fairly straightforward. The controller calls a service function to perform an $http request to read the quizzes.json file. It then displays the quiz image, title and description in flex boxes. 
 
-![Sample Home Screen](../../images/Sample_Home_Screen.jpg)
+![Sample Home Screen](/tree/master/images/Sample_Home_Screen.jpg)
 
 It directs the user to choose a quiz. When the user clicks on the quiz picture, it does a ui-sref link, passing to the quiz controller the brief name of the quiz. 
 
