@@ -1,19 +1,18 @@
 <div class="homeContainer">
-    <header>
-        Online Quiz With Pictures
-    </header>
-    <div class="choice">
-        Choose a Quiz Below
-    </div>
-    <div class="quizChoices">
-        <!--<div class="quiz" ng-click="rotate()" ng-repeat="quiz in quizzes">-->
-        <div class="quiz" ng-repeat="quiz in quizzes">
-            <p class="title">{{quiz.title}}</p>
-            <a ui-sref="Quiz({quizBriefName: quiz.briefName})"><img ng-src="{{quiz.picture}}" alt="Quiz" width="200"></a>
-            <p class="description">{{quiz.description}}</p>
+    <div class="homeBody">
+        <header>
+            Online Quiz With Pictures
+        </header>
+        <div class="choice">
+            Choose a Quiz Below
+        </div>
+        <div class="quizChoices">
+            <!--<div class="quiz" ng-click="rotate()" ng-repeat="quiz in quizzes">-->
+            <div class="quiz" ng-repeat="quiz in quizzes">
+                <p class="title">{{quiz.title}}</p>
+                <a ui-sref="Quiz({quizBriefName: quiz.briefName})"><img ng-src="{{quiz.picture}}" alt="Quiz" width="200"></a>
+                <p class="description">{{quiz.description}}</p>
+            </div>
         </div>
     </div>
-    <footer>
-        Coded in Angular 1.x and Angular UI Router by <a href=https://www.linkedin.com/in/doug-alderman-20210420>Doug Alderman</a>
-    </footer>
 </div>
