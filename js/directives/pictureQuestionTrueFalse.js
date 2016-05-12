@@ -18,12 +18,15 @@ angular.module('pictureQuiz')
             getNextQuestion: '&'
         }, 
         controller: function($scope) {
+			$scope.answer = '';
             $scope.userAnswered = false;
             $scope.userAnsweredCorrectly = false;
+			$scope.borderOnYes = false;
+			$scope.borderOnNo = false;
             $scope.processUserInput = function(selection, whereFrom) {
-                if (!$scope.userAnswered) { // if haven't already answered question
-                    var temp = ((whereFrom === 'fromRadio') && $scope.autoSubmit);
-                    var temp2 = ((whereFrom === 'fromButton') && !$scope.autoSubmit);
+				if (!$scope.userAnswered) { // if haven't already answered question
+                    var temp = ((whereFrom === 'fromSelect') && $scope.autoSubmit);
+                    var temp2 = ((whereFrom === 'fromSubmit') && !$scope.autoSubmit);
                     if (temp || temp2) {
                         $scope.userAnswered = true;
                         if (selection === $scope.correctAnswer) {
@@ -36,9 +39,19 @@ angular.module('pictureQuiz')
                         }
 
                     }
-                }
+					else { // selected but not submitted / autosubmit
+						$scope.answer = selection;
+						if (selection === 'True') {
+							$scope.borderOnYes = true;
+							$scope.borderOnNo = false;
+						}
+						else {
+							$scope.borderOnYes = false;
+							$scope.borderOnNo = true;
+						}
+					}
+				}
             }    
-         
         } 
     }
 });
