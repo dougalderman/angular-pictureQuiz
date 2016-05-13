@@ -1,10 +1,14 @@
 <div>{{question}}</div>
 <br>
 <div class="answerContainer">
-    <form ng-submit="processUserInput(answer, 'fromButton')">
-        <input type="radio" ng-click="processUserInput(answer, 'fromRadio')" ng-model="answer" value="True">True<br>
-        <input type="radio" ng-click="processUserInput(answer, 'fromRadio')" ng-model="answer" value="False">False<br>
-        <br>
+	<form ng-submit="processUserInput(answer, 'fromSubmit')">
+		<div class="bool_answer_container">
+    		<div class="bool_answer left_bool" ng-class="{black_border_and_text: borderOnYes}" ng-click="processUserInput('True', 'fromSelect')">Yes
+			</div>
+    		<div class="bool_answer right_bool" ng-class="{black_border_and_text: borderOnNo}" ng-click="processUserInput('False', 'fromSelect')">No
+			</div>
+		</div>
+	    <br>
         <input class="button" type="submit" ng-hide="autoSubmit">
     </form>
     <div class="afterSubmit">

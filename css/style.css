@@ -174,17 +174,18 @@ html, body {
     right: 0;
 }
 
-.text_multiple_choice {
+.multiple_choice_options {
 	height: 40px;
-    width: 80px;
+/*    width: 80px; */
 	background-color: rgba(0, 117, 255, 0.66);
     color: #fff;
     text-align: center;
     line-height: 40px;
-	margin: 0 20px;
+	padding: 0 20px;
+	margin: 10px 20px;
 }
 
-.text_multiple_choice:hover {
+.multiple_choice_options:hover {
 	cursor: pointer;
 }
 
@@ -201,11 +202,11 @@ html, body {
     font-size: 0.9em;
 }
 
-.answerContainer form.multiple_choice {
+.answerContainer .multiple_choice {
 	display: flex;
   	flex-direction: row;
   	flex-wrap: wrap;
-}
+} 
 
 .answerContainer .afterSubmit {
     display: block;
@@ -231,7 +232,7 @@ html, body {
 }
 
 .multiple_choice_button {
-	margin-top: 30px;
+	margin-top: 10px;
 }
 
 
