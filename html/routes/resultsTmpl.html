@@ -7,8 +7,7 @@
         <p>You completed the test in: <span class="num">{{secondsElapsed}}</span> seconds.</p>
         <br>
         Return <a ui-sref="Home">Home</a>
-        <div class="giphy" animate-on-load>
-           <!-- <img ng-src="{{giphyUrl}}">-->
+        <div ng-class="{'giphy-great-job': percentCorrect >= 50, 'giphy-ok-job': percentCorrect < 50}" animate-on-load>
         </div>
     </div>
 </div>

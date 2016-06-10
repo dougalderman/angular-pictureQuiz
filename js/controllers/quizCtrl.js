@@ -22,6 +22,9 @@ angular.module('pictureQuiz')
         $scope.title = $scope.quiz.title;
         $scope.autoSubmit = $scope.quiz.config.autoSubmit;
         $scope.userCorrect = [];
+		$scope.borderOn = [];
+		$scope.borderOnYes = false;
+		$scope.borderOnNo = false;
        
         $scope.questions = $scope.quiz.config.randomizeQuestionSequence ? 
             quizService.randomizeQuestionSequence($scope.quiz.questions) :
@@ -60,6 +63,9 @@ angular.module('pictureQuiz')
             $scope.currentQuestion++;
             $scope.userAnswered = false;
             $scope.userAnsweredCorrectly = false;
+			$scope.borderOn = [];
+			$scope.borderOnYes = false;
+			$scope.borderOnNo = false;
             
             $scope.gotoTop();
             

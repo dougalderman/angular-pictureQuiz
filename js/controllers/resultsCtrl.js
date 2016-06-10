@@ -17,11 +17,4 @@ angular.module('pictureQuiz')
     
     $scope.secondsElapsed = $stateParams.secondsElapsed;
     
-    
-    /* $scope.giphyUrl = 'https://media.giphy.com/media/iabcSfUB6VZYc/giphy.gif';
-    
-    var elem = angular.element(document.querySelector('.giphy.ng-enter')); 
-    elem.css('background-image', $scope.giphyUrl); */
-        
-
 });

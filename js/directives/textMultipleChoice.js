@@ -15,14 +15,14 @@ angular.module('pictureQuiz')
             userCorrect: '=',
             userAnswered: '=',
             userAnsweredCorrectly: '=',
-            getNextQuestion: '&'
+            getNextQuestion: '&',
+			borderOn: '='
 
         },
         controller: function($scope) {
 			$scope.answer = '';
             $scope.userAnswered = false;
             $scope.userAnsweredCorrectly = false;
-			$scope.borderOn = [];
 			$scope.processUserInput = function(selection, whereFrom) {
 				if (!$scope.userAnswered) { // if haven't already answered question
                     

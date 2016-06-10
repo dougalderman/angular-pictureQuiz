@@ -336,19 +336,25 @@ html, body {
     color: darkgreen;
 }
 
-.resultsContainer .giphy {
+.resultsContainer .giphy-great-job, .resultsContainer .giphy-ok-job {
     margin-top: 30px;
     width: 300px;
     height: 200px;
 }
 
-.resultsContainer .giphy.ng-enter {
+.resultsContainer .giphy-great-job.ng-enter {
     transition: transform 7s ease-in;
     background-image: url("https://media.giphy.com/media/iabcSfUB6VZYc/giphy.gif"); 
     background-size: cover; 
 }
 
-.resultsContainer .giphy.ng-enter.ng-enter-active {
+.resultsContainer .giphy-ok-job.ng-enter {
+    transition: transform 7s ease-in;
+    background-image: url("https://media.giphy.com/media/aLdiZJmmx4OVW/giphy.gif"); 
+    background-size: cover; 
+}
+
+.resultsContainer .giphy-great-job.ng-enter.ng-enter-active, .resultsContainer .giphy-ok-job.ng-enter.ng-enter-active {
     transform: perspective(400px) rotateX(90deg);
 }
 
