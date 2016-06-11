@@ -7,7 +7,16 @@
         <p>You completed the test in: <span class="num">{{secondsElapsed}}</span> seconds.</p>
         <br>
         Return <a ui-sref="Home">Home</a>
-        <div ng-class="{'giphy-great-job': percentCorrect >= 50, 'giphy-ok-job': percentCorrect < 50}" animate-on-load>
-        </div>
+		
+		<p>
+		  <input type="button" value="set" ng-click="myCssVar='yes'">
+		  <input type="button" value="clear" ng-click="myCssVar='no'">
+		  <br>
+		  <div class="giphy-great-job" ng-show="myCssVar==='yes'"></div>
+		</p>
+        <!--<div ng-class="{'giphy-great-job': percentCorrect >= 50, 'giphy-ok-job': percentCorrect < 50}">
+        </div>-->
+		
+		
     </div>
 </div>
