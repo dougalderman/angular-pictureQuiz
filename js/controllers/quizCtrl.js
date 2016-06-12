@@ -21,6 +21,8 @@ angular.module('pictureQuiz')
     $scope.processQuiz = function() {
         $scope.title = $scope.quiz.title;
         $scope.autoSubmit = $scope.quiz.config.autoSubmit;
+		$scope.percentGreatJob = $scope.quiz.config.percentGreatJob;
+		$scope.rightSide = $scope.quiz.config.rightSide;
         $scope.userCorrect = [];
 		$scope.borderOn = [];
 		$scope.borderOnYes = false;
@@ -77,7 +79,8 @@ angular.module('pictureQuiz')
              $state.go('Results', {
                  title: $scope.title,
                  secondsElapsed: $scope.secondsElapsed, 
-                 userCorrectArray: $scope.userCorrect
+                 userCorrectArray: $scope.userCorrect,
+				 percentGreatJob: $scope.percentGreatJob
              });
          }
        

@@ -1,10 +1,12 @@
 {
   "briefName": 	"presidents",
   "title":      "American Presidents",
-  "config":{
+  "config": {
       "randomizeQuestionSequence": false,
-      "autoSubmit": false
-    },
+      "autoSubmit": false,
+	  "percentGreatJob": 50,
+	  "rightSide": "giphy"
+  },
   "questions": [
     {
       "id":      0,
