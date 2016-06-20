@@ -23,6 +23,7 @@ angular.module('pictureQuiz')
         $scope.autoSubmit = $scope.quiz.config.autoSubmit;
 		$scope.percentGreatJob = $scope.quiz.config.percentGreatJob;
 		$scope.rightSide = $scope.quiz.config.rightSide;
+		$scope.rightSideGiphy = '';
         $scope.userCorrect = [];
 		$scope.borderOn = [];
 		$scope.borderOnYes = false;
@@ -48,8 +49,25 @@ angular.module('pictureQuiz')
         $scope.options = $scope.questions[0].options;
 
         $scope.startTimeObject = new Date();
-        
-    }
+		
+		if ($scope.rightSide === 'giphy') {
+            quizService.streamGiphys($scope.title);
+		    .then(function(response) {
+				console.log(response, 'FROM MY CONTROLLER');
+				$scope.gifs = response;
+				if (response.length) {
+					var i = 0;
+					setInterval(function() {
+						$scope.rightSideGiphy = response[i];
+                        i++;
+					}, 5000);
+				}
+			})
+			.catch(function(err) {
+				  console.log(err);
+			})
+		};
+    };
         
     $scope.getNextQuestion = function() {
         
