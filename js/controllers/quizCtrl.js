@@ -51,14 +51,16 @@ angular.module('pictureQuiz')
         $scope.startTimeObject = new Date();
 		
 		if ($scope.rightSide === 'giphy') {
-            quizService.streamGiphys($scope.title);
+            quizService.streamGiphys($scope.title)
 		    .then(function(response) {
 				console.log(response, 'FROM MY CONTROLLER');
-				$scope.gifs = response;
 				if (response.length) {
 					var i = 0;
 					setInterval(function() {
-						$scope.rightSideGiphy = response[i];
+						console.log('in setInterval');
+						console.log('i = ' + i);
+						$scope.rightSideGiphy = response.data[i].images.downsized_medium;
+						console.log('$scope.rightSideGiphy = '+ $scope.rightSideGiphy);
                         i++;
 					}, 5000);
 				}
