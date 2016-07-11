@@ -1,4 +1,4 @@
-<div class="picture"><img ng-src = "{{pictureQuestion}}" width="225"></div>
+<div class="picture"><img ng-src = "{{pictureQuestion}}" width="225" alt="President Image"></div>
 <div>{{question}}</div>
 <br>
 <div class="answerContainer">
@@ -10,7 +10,7 @@
 			</div>
 		</div>
 	    <br>
-        <input class="button" type="submit" ng-hide="autoSubmit">
+        <input class="button" type="submit" value="Submit" ng-hide="autoSubmit">
     </form>
     <div class="afterSubmit">
         <div class="green" ng-show="userAnswered && userAnsweredCorrectly">

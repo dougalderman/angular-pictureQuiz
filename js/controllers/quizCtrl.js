@@ -1,5 +1,5 @@
 angular.module('pictureQuiz')
-.controller('quizCtrl', function ($scope, quizService, dataUrl, $stateParams, $state, $location, $anchorScroll) {
+.controller('quizCtrl', function ($scope, quizService, dataUrl, $stateParams, $state, $location, $interval, $anchorScroll) {
     
     console.log('in quizCtrl');
     
@@ -54,15 +54,21 @@ angular.module('pictureQuiz')
             quizService.streamGiphys($scope.title)
 		    .then(function(response) {
 				console.log(response, 'FROM MY CONTROLLER');
-				if (response.length) {
+				var giphyArrayLength = response.data.data.length;
+				if (giphyArrayLength) {
 					var i = 0;
-					setInterval(function() {
-						console.log('in setInterval');
+					$scope.rightSideGiphy = response.data.data[i].images.downsized_medium.url;
+					console.log('$scope.rightSideGiphy = ' + $scope.rightSideGiphy);
+					$interval(function() {
+						i++;
+						if (i >= giphyArrayLength) {
+							i = 0 // reset to 0 if at end of array
+						}
+						console.log('in $interval');
 						console.log('i = ' + i);
-						$scope.rightSideGiphy = response.data[i].images.downsized_medium;
+						$scope.rightSideGiphy = response.data.data[i].images.downsized_medium.url;
 						console.log('$scope.rightSideGiphy = '+ $scope.rightSideGiphy);
-                        i++;
-					}, 5000);
+					}, 7000);
 				}
 			})
 			.catch(function(err) {

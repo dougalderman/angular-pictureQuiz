@@ -68,7 +68,7 @@ html, body {
 
 .quiz .description {
     font-size: 0.9em;
-    font-family: "Arial";
+    font-family: Arial;
 }
 
 
@@ -87,6 +87,7 @@ html, body {
     width: 100vw; 
     background-color: rgba(210, 180, 140, 0.47);
     font-family: "Times New Roman", serif;
+	font-size: 1em;
 	overflow-y: hidden;
   /*  padding-left: 5px; 
 	padding-right: 5px; */
@@ -140,14 +141,18 @@ html, body {
 
 .right-side {
 	position: relative;
-	top: 80px;
-	padding-right: 5px;
+	top: 120px;
+/*	padding-right: 5px; */
+	margin-right: 20px;
 	width: 25%;
+	text-align: center;
+	font-family: Georgia, serif;
+	color: rgba(0, 117, 255, 0.66);
 }
 
-.right-side img {
+/* .right-side img {
 	height: 100px;
-}
+} */
 
 .answerContainer {
   display: flex;
@@ -188,12 +193,11 @@ html, body {
 }
 
 .multiple_choice_options {
-	height: 40px;
-/*    width: 80px; */
+	height: 40px; 
 	background-color: rgba(0, 117, 255, 0.66);
     color: #fff;
     text-align: center;
-    line-height: 40px;
+    line-height: 40px; 
 	padding: 0 20px;
 	margin: 10px 20px;
 }
@@ -205,7 +209,7 @@ html, body {
 .black_border_and_text {
     border: 3px solid black;
     color: black;
-    line-height: 34px;
+/*    line-height: 34px; */
 }
 
 .answerContainer form {
@@ -228,7 +232,7 @@ html, body {
 }
 
 .answerContainer input[type="text"] {
-	height: 40px;
+	height: 40px; 
 	width: 230px;
 	font-family: Arial;
 	font-size: 1.1em;
@@ -376,4 +380,66 @@ html, body {
   width: 100%;
   margin: 0 auto;
   overflow-y: auto;
+}
+
+@media (max-width: 850px)  {
+	.questionContainer {
+		font-size: 1.5em;
+	}
+	
+	.button, button {
+		width: 150px;
+	}
+}
+
+@media (max-width: 500px)  {
+	.right-side {
+		display: none;
+	}
+	
+	.questionHeader {
+		height: 120px;
+		line-height: 120px;
+	}
+	
+	.questionHeader .topLeft {
+		position: static;
+		height: 70px;
+		line-height: 70px;
+		font-size: 1em;
+	}
+	
+	.questionHeader .topRight {
+		position: static;
+		height: 50px;
+		line-height: 50px;
+	}
+	
+	.questionBody {
+		position: absolute;
+		overflow-y: auto;
+		top: 120px;
+		width: 100%;
+	    background-color: rgba(210, 180, 140, 0.47);
+	}
+	
+	.questionContainer {
+		position: relative;
+		overflow-y: initial;
+		background-color: initial;
+	}
+	
+	.questionContainer .picture {
+		padding-top: 50px;
+	}
+	
+	.bool_answer {
+		height: 70px;
+		line-height: 70px;
+	}
+	
+	.button, button {
+		height: 70px;
+		margin-top: 20px;
+	}
 }

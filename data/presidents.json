@@ -1,6 +1,6 @@
 {
   "briefName": 	"presidents",
-  "title":      "American Presidents",
+  "title":      "US Presidents",
   "config": {
       "randomizeQuestionSequence": false,
       "autoSubmit": false,

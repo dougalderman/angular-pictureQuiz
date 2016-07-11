@@ -24,8 +24,11 @@ angular.module('pictureQuiz')
 	
 	this.streamGiphys = function(keyword) {
 		var url = 'http://api.giphy.com/v1/gifs/search?q=' + keyword + '&api_key=dc6zaTOxFJmzC';
-		var respArray = [];		
-    	return $http.get(url)
+		var respArray = [];
+		 return $http({
+            method: 'GET',
+            url: url
+		 });
     };
     
 });

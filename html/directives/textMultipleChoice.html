@@ -6,7 +6,7 @@
 			<span class="multiple_choice_options" ng-class="{black_border_and_text: borderOn[$index]}" ng-click="processUserInput($index, 'fromSelect')" ng-repeat = "option in options">{{option.answer}}
 		</div>
 		</span>
-	    <input class="button multiple_choice_button" type="submit" ng-hide="autoSubmit">
+	    <input class="button multiple_choice_button" type="submit" value="Submit" ng-hide="autoSubmit">
     </form>
     <div class="afterSubmit">
         <div class="green" ng-show="userAnswered && userAnsweredCorrectly">
