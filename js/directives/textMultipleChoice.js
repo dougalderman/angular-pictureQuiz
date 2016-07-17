@@ -16,8 +16,8 @@ angular.module('pictureQuiz')
             userAnswered: '=',
             userAnsweredCorrectly: '=',
             getNextQuestion: '&',
-			borderOn: '='
-
+			borderOn: '=',
+            gotoTopAfterSubmit: '&'
         },
         controller: function($scope) {
 			$scope.answer = '';
@@ -40,8 +40,8 @@ angular.module('pictureQuiz')
                             $scope.userCorrect[$scope.questionId] = false;
                             $scope.userAnsweredCorrectly = false;
                         }
-
-                    }
+						$scope.gotoTopAfterSubmit();
+                   }
 					else { // selected but not submitted / autosubmit
 						for (var i = 0; i < $scope.options.length; i++) {
 							$scope.borderOn[i] = false; // initialize to false for all options

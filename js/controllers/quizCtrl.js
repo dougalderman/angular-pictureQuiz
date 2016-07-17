@@ -1,5 +1,5 @@
 angular.module('pictureQuiz')
-.controller('quizCtrl', function ($scope, quizService, dataUrl, $stateParams, $state, $location, $interval, $anchorScroll) {
+.controller('quizCtrl', function ($scope, quizService, dataUrl, $stateParams, $state, $interval) {
     
     console.log('in quizCtrl');
     
@@ -113,12 +113,20 @@ angular.module('pictureQuiz')
     }
     
     $scope.gotoTop = function() {
-      // set the location.hash to the id of
+		
+		$(".questionBody").animate({ scrollTop: 0 }, "fast");
+
+      /*// set the location.hash to the id of
       // the element you wish to scroll to.
       $location.hash('top');  // top of body
 
       // call $anchorScroll()
-      $anchorScroll();
+      $anchorScroll(); */
     };
+	
+	$scope.gotoTopAfterSubmit = function() {
+		
+		$(".afterSubmit").animate({ scrollTop: 0 }, "fast");
+	}
        
 });
