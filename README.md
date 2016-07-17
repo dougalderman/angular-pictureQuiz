@@ -1,7 +1,21 @@
 #Angular Picture Quiz
 
+This app is a online quiz with the option of using a picture as part of the question, or pictures as answer options. It allows for multiple choice, short answer, and true-false types questions. There are 3 text-only questions types, 3 picture questions, and one picture answer multiple choice, for a total of 7 question types. Quizzes are defined in json configuration files. This is strictly a front-end Angular app, that can be served as static HTML.
 
-This app is a online quiz with the option of using a picture as part of the question, or pictures as answer options. It allows for multiple choice, short answer, and true-false types questions. There are 3 text-only questions types, 3 picture questions, and one picture answer multiple choice, for a total of 7 question types. 
+##Getting Started
+### Prerequisites
+- Familiarity with JSON file format to build quizzes.
+- Familiarity with Angular JS ver 1 and HTML / CSS helpful if you want to modify code or integrate into another site.
+
+###Installation
+ git clone https://github.com/dougalderman/angular-pictureQuiz.git
+
+##Design Goals
+This app is intended to provide the user with a visually-appealing online quiz experience. It can be used on its own or integrated into a separate site. A possible use case is an addition to an informational website that will provide interactivity without requiring login or server code.
+
+##Detailed Usage
+
+###JSON confiration files
 
 A quizzes.json configuration file is the master configuration which lists the different quizzes available and some basic information about the quizzes. Here's an example of a quizzes.json file with 3 quizzes:
 
@@ -35,11 +49,13 @@ Each quiz has its own json file with configuration options and specifications of
 ```javascript
 {
   "briefName": 	"presidents",
-  "title":      "American Presidents",
-  "config":{
+  "title":      "US Presidents",
+  "config": {
       "randomizeQuestionSequence": false,
-      "autoSubmit": false
-    },
+      "autoSubmit": false,
+      "percentGreatJob": 60,
+      "rightSide": "giphy"
+  },
   "questions": [
     {
       "id":      0,
@@ -48,7 +64,7 @@ Each quiz has its own json file with configuration options and specifications of
       "type":     "pictureQuestionTrueFalse",
       "correctAnswer": "False"
     },
-   	{
+    {
       "id":      1,
       "question": "Select the year Franklin D. Roosevelt first took office as president",
       "type":     "textMultipleChoice",
@@ -60,7 +76,7 @@ Each quiz has its own json file with configuration options and specifications of
 	  ],		
       "correctAnswer": "1933"
     },
-	{
+    {
       "id":      2,
       "question": "Click on the picture of the President who was NOT assassinated while in office",
       "type":     "pictureAnswer",
@@ -71,32 +87,24 @@ Each quiz has its own json file with configuration options and specifications of
             { "id": "d", "pictureAnswer": "images/John_F_Kennedy.jpg"}
 	  ],		
       "correctAnswer": "c"
-    },
-	{
-      "id":      3,
-      "question": "Give the first and last name of the president who said 'Speak softly and carry a big stick'",
-      "type":     "textShortAnswer",
-	  "correctAnswerArray": [
-		"Ted Roosevelt",
-		"Teddy Roosevelt",
-		"Theodore Roosevelt"
-	  ]
     }
   ]
 }
 ```	
     
-As can be seen from the config object at the beginning, there are 2 configuration options:
+There are 4 configuration options:
 
- - randomizeQuestionSequence--if set to true, uses the Durstenfeld
-	   shuffle algorithm to randomize the question sequence. Otherwise shows questions in the order they were specified in the .json file.
- - autoSubmit--if set to true, automatically submits client's selection
-   (with the exception of short answers, which wait for user to hit a
-   submit button). Otherwise has user click a submit button after
-   selecting the option (with the exception of picture answers, which
-   are automatically submitted when clicked).
+ - randomizeQuestionSequence--if set to true, uses the Durstenfeld  shuffle algorithm to randomize the question sequence. Otherwise shows questions in the order they were specified in the .json file.
+ - autoSubmit--if set to true, automatically submits client's selection (with the exception of short answers, which wait for user to hit a submit button). Otherwise has user click a submit button after selecting the option (with the exception of picture answers, which are automatically submitted when clicked).
+ - percentGreatJob--this is the % correct that is needed to display the giphy corresponding to CSS class giphy-great-job in the results page. If % is below this level, then giphy-ok-job will be displayed.
+ - rightSide (optional)--set to 'giphy' to display a stream of giphys in the right side of the quiz page. If blank, or the option doesn't exist, the right side will be blank.
+ - rightSideGiphyKeywords (optional)--set to the keyword to use for calling the Giphy API for the right side giphy stream. If blank, or this option doesn't exist, giphy will default to using the keywords in the "title" property.
 
-It uses only front-end Javascript frameworks Angular 1.x and Angular UI Router. There are 3 routes and 8 directives.
+
+
+###Angular Code
+
+This app uses only front-end Javascript frameworks Angular 1.x and Angular UI Router, and can be served as static HTML. There are 3 routes and 8 directives.
 
 Routes:
 
@@ -146,13 +154,14 @@ angular.module('pictureQuiz', ['ui.router', 'ngAnimate'])
                 title: '',
                 secondsElapsed: 0,
                 userCorrectArray: [],
+		percentGreatJob: 0
             },
             controller: 'resultsCtrl'
         });
-
 });
+
 ```
-As can be seen from the code, each route has its own controller and template. 
+As can be seen from the code, each route has its own controller and templateUrl. 
 
 
 ###Home Route
@@ -166,6 +175,26 @@ It directs the user to choose a quiz. When the user clicks on the quiz picture, 
 
 ###Quiz Route
 
-The quiz controller first calls a service function to do an $http request to read the name.json file, where 'name' is the quiz name passed as a parameter to this route. It then calls a processQuiz() function which sets some $scope variables. quiz template is a series of 7 element directives. The directives are set to only ng-show when the question type is set to that question type.
+The quiz controller first calls a service function to do an $http request to read the name.json file, where 'name' is the quiz name passed as a parameter to this route. It then calls a processQuiz() function which sets some $scope variables. The quiz template is a series of 7 element directives. The directives are set to only ng-show when the question type is set to that question type. Here is the beginning part of the quizTmpl.html file:
 
-> Written with [StackEdit](https://stackedit.io/).## Heading ##
+```html
+<div class="questionContainer">
+    
+    <div class="questionHeader">
+        <div class="topLeft">{{title}} Quiz</div>
+        <div class="topRight">Question {{currentQuestion}} of {{numQuestions}}</div>
+    </div>
+
+    <div class="questionBody">
+        <picture-answer title="{{title}}" auto-submit="autoSubmit" num-questions="{{numQuestions}}" current-question="{{currentQuestion}}" question-id="questionId" question="{{question}}" options= "options" correct-answer="{{correctAnswer}}" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion()" goto-top = "gotoTop(numPixels)" ng-show="questionType === 'pictureAnswer'"></picture-answer>
+
+        <picture-question-multiple-choice title="{{title}}" auto-submit="autoSubmit" num-questions="{{numQuestions}}" current-question="{{currentQuestion}}" question-id="questionId" question="{{question}}" options= "options" correct-answer="{{correctAnswer}}" picture-question="{{pictureQuestion}}" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion()" border-on="borderOn" goto-top = "gotoTop(numPixels)" ng-show="questionType === 'pictureQuestionMultipleChoice'"></picture-question-multiple-choice>
+```
+
+In the screen shot below, the pictureQuestionTrueFalse directive is active. Notice also the right side giphy.
+
+![Sample Quiz Screen](https://github.com/dougalderman/angular-pictureQuiz/blob/master/images/Sample_Quiz_Screen.jpg)
+
+
+##License
+This code is open source under the MIT license:  https://opensource.org/licenses/MIT
