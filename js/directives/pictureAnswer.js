@@ -33,13 +33,9 @@ angular.module('pictureQuiz')
                         $scope.userCorrect[$scope.questionId] = false;
                         $scope.userAnsweredCorrectly = false;
                     }
-                    $scope.gotoTop();
-                    
+					$scope.gotoTop({numPixels: 0});
                 }
             }    
-         
         }
-          
     }
-        
 });

@@ -25,6 +25,7 @@ angular.module('pictureQuiz', ['ui.router', 'ngAnimate'])
                 title: '',
                 secondsElapsed: 0,
                 userCorrectArray: [],
+				percentGreatJob: 0
             },
             controller: 'resultsCtrl'
         });

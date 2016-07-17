@@ -1,26 +1,21 @@
-<div class="questionContainer">
-    <div class="topLeft">{{title}} Quiz</div>
-    <div class="topRight">Question {{currentQuestion}} of {{numQuestions}}</div>
-    <br><br><br>
-    <div>{{question}}</div>
-    <br>
-    <div class="answerContainer">
-        <form ng-submit="processUserInput(answer, 'fromButton')">
-            <div ng-repeat = "option in options">
-            <input type="radio" ng-click="processUserInput(answer, 'fromRadio')" ng-model="answer" value="{{option.answer}}" name="select">{{option.answer}}<br>
-            </div>
-            <br>
-            <input class="button" type="submit" ng-hide="autoSubmit">
-        </form>
-        <div class="afterSubmit">
-            <div class="green" ng-show="userAnswered && userAnsweredCorrectly">
-                You got it right!! Great job!!
-            </div>
-            <div class="red" ng-show="userAnswered && !userAnsweredCorrectly">
-                Sorry, the correct answer is "{{correctAnswer}}"
-            </div>
-            <br><br>
-            <button ng-show="userAnswered" ng-click="getNextQuestion()">Next</button>
+<div>{{question}}</div>
+<br>
+<div class="answerContainer">
+    <form ng-submit="processUserInput(answer, 'fromSubmit')">
+		<div class="multiple_choice">
+			<span class="multiple_choice_options" ng-class="{black_border_and_text: borderOn[$index]}" ng-click="processUserInput($index, 'fromSelect')" ng-repeat = "option in options">{{option.answer}}
+		</div>
+		</span>
+	    <input class="button multiple_choice_button" type="submit" value="Submit" ng-hide="autoSubmit">
+    </form>
+    <div class="afterSubmit">
+        <div class="green" ng-show="userAnswered && userAnsweredCorrectly">
+            You got it right!! Great job!!
         </div>
+        <div class="red" ng-show="userAnswered && !userAnsweredCorrectly">
+            Sorry, the correct answer is "{{correctAnswer}}"
+        </div>
+        <br><br>
+        <button ng-show="userAnswered" ng-click="getNextQuestion()">Next</button>
     </div>
 </div>
