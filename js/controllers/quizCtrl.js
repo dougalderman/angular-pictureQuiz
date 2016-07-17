@@ -24,7 +24,8 @@ angular.module('pictureQuiz')
 		$scope.percentGreatJob = $scope.quiz.config.percentGreatJob;
 		$scope.rightSide = $scope.quiz.config.rightSide;
 		$scope.rightSideGiphy = '';
-        $scope.userCorrect = [];
+		$scope.rightSideGiphyKeywords = $scope.quiz.config.rightSideGiphyKeywords ?$scope.quiz.config.rightSideGiphyKeywords : $scope.title;
+		$scope.userCorrect = [];
 		$scope.borderOn = [];
 		$scope.borderOnYes = false;
 		$scope.borderOnNo = false;
@@ -51,7 +52,7 @@ angular.module('pictureQuiz')
         $scope.startTimeObject = new Date();
 		
 		if ($scope.rightSide === 'giphy') {
-            quizService.streamGiphys($scope.title)
+            quizService.streamGiphys($scope.rightSideGiphyKeywords)
 		    .then(function(response) {
 				console.log(response, 'FROM MY CONTROLLER');
 				var giphyArrayLength = response.data.data.length;
@@ -95,7 +96,7 @@ angular.module('pictureQuiz')
 			$scope.borderOnYes = false;
 			$scope.borderOnNo = false;
             
-            $scope.gotoTop();
+            $scope.gotoTop(0);
             
             return;
                  }
@@ -112,21 +113,9 @@ angular.module('pictureQuiz')
        
     }
     
-    $scope.gotoTop = function() {
+    $scope.gotoTop = function(numPixels) {
 		
-		$(".questionBody").animate({ scrollTop: 0 }, "fast");
-
-      /*// set the location.hash to the id of
-      // the element you wish to scroll to.
-      $location.hash('top');  // top of body
-
-      // call $anchorScroll()
-      $anchorScroll(); */
+		$(".questionBody").animate({ scrollTop: numPixels }, "fast");
+  
     };
-	
-	$scope.gotoTopAfterSubmit = function() {
-		
-		$(".afterSubmit").animate({ scrollTop: 0 }, "fast");
-	}
-       
 });

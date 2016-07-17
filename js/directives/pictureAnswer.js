@@ -16,7 +16,7 @@ angular.module('pictureQuiz')
             userAnswered: '=',
             userAnsweredCorrectly: '=',
             getNextQuestion: '&',
-            gotoTopAfterSubmit: '&'
+            gotoTop: '&'
         },
         controller: function($scope) {
             $scope.userAnswered = false;
@@ -33,13 +33,9 @@ angular.module('pictureQuiz')
                         $scope.userCorrect[$scope.questionId] = false;
                         $scope.userAnsweredCorrectly = false;
                     }
-					$(".afterSubmit").animate({ scrollTop: 0 }, "fast");
-    //                $scope.gotoTopAfterSubmit();
+					$scope.gotoTop({numPixels: 0});
                 }
             }    
-         
         }
-          
     }
-        
 });
