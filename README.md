@@ -195,6 +195,122 @@ In the screen shot below, the pictureQuestionTrueFalse directive is active. Noti
 
 ![Sample Quiz Screen](https://github.com/dougalderman/angular-pictureQuiz/blob/master/images/Sample_Quiz_Screen.jpg)
 
+Each directive handles the user experience for its question type. For example, here is the picture answer question type directive template html:
+
+```html
+<div>{{question}}</div>
+<br>
+<div class="pictureAnswerContainer">
+    <div class= "pictureAnswerForm">
+        <div class="pictureAnswers" ng-repeat = "option in options">
+            <div class="left"> {{option.id}}) </div>
+             <img ng-src="{{option.pictureAnswer}}" ng-click="processUserInput(option.id)" alt="President Image" width="130">
+         </div>
+        <br>
+    </div>
+    <div class="afterSubmit">
+        <div class="green" ng-show="userAnswered && userAnsweredCorrectly">
+            You got it right!! Great job!!
+        </div>
+        <div class="red" ng-show="userAnswered && !userAnsweredCorrectly">
+            Sorry, the correct answer is "{{correctAnswer}}"
+        </div>
+        <br>
+        <button ng-show="userAnswered" ng-click="getNextQuestion()">Next</button>
+    </div>
+</div>
+```
+
+Here is the corresponding directive script:
+```javascript
+angular.module('pictureQuiz')
+.directive('pictureAnswer', function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'html/directives/pictureAnswer.html', 
+        scope: {
+            title: '@',
+            autoSubmit: '=',
+            numQuestions: '@',
+            currentQuestion: '@',
+            questionId: '=',
+            question: '@',
+            options: '=',
+            correctAnswer: '@',
+            userCorrect: '=',
+            userAnswered: '=',
+            userAnsweredCorrectly: '=',
+            getNextQuestion: '&',
+            gotoTop: '&'
+        },
+        controller: function($scope) {
+            $scope.userAnswered = false;
+            $scope.userAnsweredCorrectly = false;
+            $scope.processUserInput = function(selection) {
+                if (!$scope.userAnswered) { // if haven't already answered question
+                    
+                    $scope.userAnswered = true;
+                    if (selection === $scope.correctAnswer) {
+                        $scope.userCorrect[$scope.questionId] = true;
+                        $scope.userAnsweredCorrectly = true;
+                    }
+                    else {
+                        $scope.userCorrect[$scope.questionId] = false;
+                        $scope.userAnsweredCorrectly = false;
+                    }
+		    $scope.gotoTop({numPixels: 0});
+                }
+            }    
+        }
+    }
+});
+```
+
+processUserInput() is the directive function that handles the user input. It checks if the answer is correct, and updates $scope.userCorrect array, which is the array quizCtrl.js uses to track right or wrong answers for the quiz. Div class="afterSubmit" in the template handles letting the user know whether his answer is correct or incorrect. The user is in control of going to the next question by clicking the "Next" button. This button calls quizCtrl.js function getNextQuestion():
+
+```javascript
+$scope.getNextQuestion = function() {
+        
+	var i = $scope.currentQuestion - 1; // index one less than question #
+	if (i < $scope.numQuestions - 1) { // if not at end
+	    $scope.questionId = $scope.questions[i + 1].id;
+	    $scope.questionType = $scope.questions[i + 1].type; 
+	    $scope.question = $scope.questions[i + 1].question;
+	    $scope.correctAnswer = $scope.questions[i + 1].correctAnswer;
+	    $scope.correctAnswerArray = $scope.questions[i + 1].correctAnswerArray;
+	    $scope.pictureQuestion = $scope.questions[i + 1].pictureQuestion;
+	    $scope.options = $scope.questions[i + 1].options; 
+	    $scope.currentQuestion++;
+	    $scope.userAnswered = false;
+	    $scope.userAnsweredCorrectly = false;
+			$scope.borderOn = [];
+			$scope.borderOnYes = false;
+			$scope.borderOnNo = false;
+	    
+	    $scope.gotoTop(0);
+	    
+	    return;
+	         }
+	 else { // completed all questions
+	     $scope.endTimeObject = new Date();
+	     $scope.secondsElapsed = Math.floor(($scope.endTimeObject.getTime() - $scope.startTimeObject.getTime()) / 1000);
+	     $state.go('Results', {
+	         title: $scope.title,
+	         secondsElapsed: $scope.secondsElapsed, 
+	         userCorrectArray: $scope.userCorrect,
+				 percentGreatJob: $scope.percentGreatJob
+	     });
+	 }
+}
+```    
+
+Here is a screen shot of an example of the picture answer question type in the US Presidents quiz:
+
+
+
+
+
+
 
 ##License
 This code is open source under the MIT license:  https://opensource.org/licenses/MIT
