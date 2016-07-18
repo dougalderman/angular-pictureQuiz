@@ -1,15 +1,13 @@
 <div>{{question}}</div>
 <br>
 <div class="pictureAnswerContainer">
-    <div class= "pictureAnswerForm">
-        <div class="pictureAnswers" ng-repeat = "option in options">
-            <div class="left"> {{option.id}}) </div>
-            <!--<input type="radio" ng-click="processUserInput(answer, 'fromRadio')" ng-model="answer" value="{{option.id}}" name="selection"><img ng-src="{{option.pictureAnswer}}" alt="President Image" width=150><br>-->
-            <!--<img ng-src="{{option.pictureAnswer}}" ng-click="processUserInput(option.id)" alt="President Image" width="150">-->
-            <img ng-src="{{option.pictureAnswer}}" ng-click="processUserInput(option.id)" alt="President Image" width="130">
-         </div>
-        <br>
-    </div>
+	<form class="pictureAnswerForm" ng-submit="processUserInput(answer, 'fromSubmit')">
+		<div class="pictureAnswers" ng-repeat = "option in options">
+			<div class="left"> {{option.id}}) </div>
+			 <img ng-src="{{option.pictureAnswer}}" ng-class="{black_border: borderOn[$index]}" ng-click="processUserInput($index, 'fromSelect')" alt="President Image" width="130">
+		 </div>
+		<input class="button multiple_choice_button" type="submit" value="Submit" ng-hide="autoSubmit">
+	</form>
     <div class="afterSubmit">
         <div class="green" ng-show="userAnswered && userAnsweredCorrectly">
             You got it right!! Great job!!

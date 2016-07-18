@@ -6,7 +6,7 @@
     </div>
 
     <div class="questionBody">
-        <picture-answer title="{{title}}" auto-submit="autoSubmit" num-questions="{{numQuestions}}" current-question="{{currentQuestion}}" question-id="questionId" question="{{question}}" options= "options" correct-answer="{{correctAnswer}}" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion()" goto-top = "gotoTop(numPixels)" ng-show="questionType === 'pictureAnswer'"></picture-answer>
+        <picture-answer title="{{title}}" auto-submit="autoSubmit" num-questions="{{numQuestions}}" current-question="{{currentQuestion}}" question-id="questionId" question="{{question}}" options= "options" correct-answer="{{correctAnswer}}" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion()" border-on="borderOn" goto-top = "gotoTop(numPixels)" ng-show="questionType === 'pictureAnswer'"></picture-answer>
 
         <picture-question-multiple-choice title="{{title}}" auto-submit="autoSubmit" num-questions="{{numQuestions}}" current-question="{{currentQuestion}}" question-id="questionId" question="{{question}}" options= "options" correct-answer="{{correctAnswer}}" picture-question="{{pictureQuestion}}" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion()" border-on="borderOn" goto-top = "gotoTop(numPixels)" ng-show="questionType === 'pictureQuestionMultipleChoice'"></picture-question-multiple-choice>
 
