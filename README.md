@@ -201,13 +201,13 @@ Each directive handles the user experience for its question type. For example, h
 <div>{{question}}</div>
 <br>
 <div class="pictureAnswerContainer">
-    <div class= "pictureAnswerForm">
-        <div class="pictureAnswers" ng-repeat = "option in options">
-            <div class="left"> {{option.id}}) </div>
-             <img ng-src="{{option.pictureAnswer}}" ng-click="processUserInput(option.id)" alt="President Image" width="130">
-         </div>
-        <br>
-    </div>
+	<form class="pictureAnswerForm" ng-submit="processUserInput(answer, 'fromSubmit')">
+		<div class="pictureAnswers" ng-repeat = "option in options">
+			<div class="left"> {{option.id}}) </div>
+			 <img ng-src="{{option.pictureAnswer}}" ng-class="{black_border: borderOn[$index]}" ng-click="processUserInput($index, 'fromSelect')" alt="President Image" width="130">
+		 </div>
+		<input class="button multiple_choice_button" type="submit" value="Submit" ng-hide="autoSubmit">
+	</form>
     <div class="afterSubmit">
         <div class="green" ng-show="userAnswered && userAnsweredCorrectly">
             You got it right!! Great job!!
@@ -219,6 +219,9 @@ Each directive handles the user experience for its question type. For example, h
         <button ng-show="userAnswered" ng-click="getNextQuestion()">Next</button>
     </div>
 </div>
+
+
+
 ```
 
 Here is the corresponding directive script:
@@ -241,25 +244,38 @@ angular.module('pictureQuiz')
             userAnswered: '=',
             userAnsweredCorrectly: '=',
             getNextQuestion: '&',
+			borderOn: '=',
             gotoTop: '&'
         },
         controller: function($scope) {
             $scope.userAnswered = false;
             $scope.userAnsweredCorrectly = false;
-            $scope.processUserInput = function(selection) {
+            $scope.processUserInput = function(selection, whereFrom) {
                 if (!$scope.userAnswered) { // if haven't already answered question
-                    
-                    $scope.userAnswered = true;
-                    if (selection === $scope.correctAnswer) {
-                        $scope.userCorrect[$scope.questionId] = true;
-                        $scope.userAnsweredCorrectly = true;
-                    }
-                    else {
-                        $scope.userCorrect[$scope.questionId] = false;
-                        $scope.userAnsweredCorrectly = false;
-                    }
-		    $scope.gotoTop({numPixels: 0});
-                }
+                   if (selection) // if selection has value
+                        $scope.selection = $scope.options[selection].id;
+                    var temp = ((whereFrom === 'fromSelect') && $scope.autoSubmit);
+                    var temp2 = ((whereFrom === 'fromSubmit') && !$scope.autoSubmit);
+                    if (temp || temp2) {
+                        $scope.userAnswered = true;
+                        if ($scope.selection === $scope.correctAnswer) {
+                            $scope.userCorrect[$scope.questionId] = true;
+                            $scope.userAnsweredCorrectly = true;
+                        }
+                        else {
+                            $scope.userCorrect[$scope.questionId] = false;
+                            $scope.userAnsweredCorrectly = false;
+                        }
+			$scope.gotoTop({numPixels: 0});
+                   }
+		   else { // selected but not submitted / autosubmit
+			for (var i = 0; i < $scope.options.length; i++) {
+				$scope.borderOn[i] = false; // initialize to false for all options
+			}
+			$scope.answer = selection;
+			$scope.borderOn[selection] = true;
+		   }
+                }    
             }    
         }
     }
@@ -283,14 +299,14 @@ $scope.getNextQuestion = function() {
 	    $scope.currentQuestion++;
 	    $scope.userAnswered = false;
 	    $scope.userAnsweredCorrectly = false;
-			$scope.borderOn = [];
-			$scope.borderOnYes = false;
-			$scope.borderOnNo = false;
+	    $scope.borderOn = [];
+	    $scope.borderOnYes = false;
+	    $scope.borderOnNo = false;
 	    
 	    $scope.gotoTop(0);
 	    
 	    return;
-	         }
+	 }
 	 else { // completed all questions
 	     $scope.endTimeObject = new Date();
 	     $scope.secondsElapsed = Math.floor(($scope.endTimeObject.getTime() - $scope.startTimeObject.getTime()) / 1000);
@@ -298,7 +314,7 @@ $scope.getNextQuestion = function() {
 	         title: $scope.title,
 	         secondsElapsed: $scope.secondsElapsed, 
 	         userCorrectArray: $scope.userCorrect,
-				 percentGreatJob: $scope.percentGreatJob
+		 percentGreatJob: $scope.percentGreatJob
 	     });
 	 }
 }
@@ -306,10 +322,94 @@ $scope.getNextQuestion = function() {
 
 Here is a screen shot of an example of the picture answer question type in the US Presidents quiz:
 
+![Picture Answer Example](https://github.com/dougalderman/angular-pictureQuiz/blob/master/images/Picture_Answer_Example.jpg)
 
+###Results Route
 
+After completing all the questions in the quiz, a $state.go statement() changes to the results route. The quiz route passes the following parameters to the results route: title, secondsElapsed, userCorrectArray, and percentGreatJob. resultsCtrl.js calculates the total number of questions from the length of userCorrectArray. It calculates the percent correct by calculating how many elements in userCorrectArray are true (set by the individual directives in the quiz route). 
 
+```javascript
+angular.module('pictureQuiz')
+.controller('resultsCtrl', function ($scope, quizService, $stateParams) {
+    
+    $scope.title = $stateParams.title;
+	$scope.percentGreatJob = $stateParams.percentGreatJob;
+    
+    $scope.numQuestions = $stateParams.userCorrectArray.length;
+	$scope.numCorrect = 0;
+    for (var i = 0; i < $scope.numQuestions; i++) {
+         if ($stateParams.userCorrectArray[i] === true)
+             $scope.numCorrect++;
+    } 
+    
+    
+    $scope.percentCorrect = 0;
+    if ($scope.numQuestions != 0)
+        $scope.percentCorrect = Math.round(($scope.numCorrect / $scope.numQuestions) * 100);
+    
+    $scope.secondsElapsed = $stateParams.secondsElapsed;
+    
+});
+```
 
+If $scope.percentCorrect >= $scope.percentGreatJob (set in the configuration json file), then animateOnLoad.js assigns className to 'giphy-great-job', else className is assigned to 'giphy-ok-job'. 
+
+```javascript
+angular.module('pictureQuiz')
+.directive('animateOnLoad', function($animateCss) {
+    return {
+        restrict: 'A',
+		scope: {
+            percentCorrect: '=',
+			percentGreatJob: '='
+		},
+        link: function(scope, elem, attrs) {
+			var className = '';
+			if (scope.percentCorrect >= scope.percentGreatJob)
+				className = 'giphy-great-job';
+			else 
+				className = 'giphy-ok-job';
+			
+			$animateCss(elem, {
+				'event': 'enter',
+				structural: true,
+				addClass: className
+			}).start();
+           
+        }
+    }
+});
+```
+
+style.css sets the appropriate great job or ok job giphy background-image depending on the class name. It also uses the .ng-enter .ng-enter.active syntax to do an Angular animation, including a 90 degree x axis transformation.
+
+```css
+.resultsContainer .giphy {
+    margin-top: 30px;
+    width: 300px;
+    height: 200px;
+}
+
+.resultsContainer .giphy-great-job.ng-enter {
+    transition: transform 7s ease-in;
+    background-image: url("https://media.giphy.com/media/iabcSfUB6VZYc/giphy.gif"); 
+    background-size: cover; 
+}
+
+.resultsContainer .giphy-ok-job.ng-enter {
+    transition: transform 7s ease-in;
+    background-image: url("https://media.giphy.com/media/aLdiZJmmx4OVW/giphy.gif"); 
+    background-size: cover; 
+}
+
+.resultsContainer .giphy-great-job.ng-enter.ng-enter-active, .resultsContainer .giphy-ok-job.ng-enter.ng-enter-active {
+    transform: perspective(400px) rotateX(90deg);
+}
+```
+
+The user sees the giphy for 7 seconds, as it gradually becomes rotated until it is no longer visible. The user also sees quiz stats like number correct out of total questions, percent correct and time elapsed. The user can then click a link to return to the home screen:
+
+![Sample Results Screen](https://github.com/dougalderman/angular-pictureQuiz/blob/master/images/Sample_Results_Screen.jpg)
 
 
 ##License
