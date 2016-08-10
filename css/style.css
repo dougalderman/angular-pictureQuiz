@@ -53,12 +53,7 @@ html, body {
   text-align: center;
   width: 40%;
   margin: 0 30px;
-  /* transition: transform 1s ease-in-out; */
 }
-
-/* .quiz .openDoor {
-  transform: perspective(400px) rotateY(75deg);
-} */
 
 .quiz .title {
     font-size: 1.3em;
@@ -89,8 +84,6 @@ html, body {
     font-family: "Times New Roman", serif;
 	font-size: 1em;
 	overflow-y: hidden;
-  /*  padding-left: 5px; 
-	padding-right: 5px; */
 }
 
 .questionHeader {
@@ -129,20 +122,15 @@ html, body {
 }
 
 .questionBody {
-  /*  height: 100%; */
 	position: relative;
 	top: 80px;
-/*    width: 100%; */
 	width: 75%;
-/*    margin: 0 auto; */
-  /*  overflow-y: auto; */
 	padding-left: 5px;
 }
 
 .right-side {
 	position: relative;
 	top: 120px;
-/*	padding-right: 5px; */
 	margin-right: 20px;
 	width: 25%;
 	text-align: center;
@@ -150,15 +138,9 @@ html, body {
 	color: rgba(0, 117, 255, 0.66);
 }
 
-/* .right-side img {
-	height: 100px;
-} */
-
 .answerContainer {
   display: flex;
   flex-direction: row;
-  /* height: 200px; */
-/*  justify-content: left; */
   width: 100%;
   margin: 0 auto;
 }
@@ -167,7 +149,6 @@ html, body {
     height: 40px;
     width: 180px;
     position: relative;
-    /* margin: 30px auto; */
 }
 
 .bool_answer {
@@ -193,7 +174,6 @@ html, body {
 }
 
 .multiple_choice_options {
-	/* height: 40px; */
 	background-color: rgba(0, 117, 255, 0.66);
     color: #fff;
     text-align: center;
@@ -209,7 +189,10 @@ html, body {
 .black_border_and_text {
     border: 3px solid black;
     color: black;
-/*    line-height: 34px; */
+}
+
+.black_border {
+    border: 3px solid black;
 }
 
 .answerContainer form {
@@ -269,14 +252,8 @@ html, body {
   display: flex;
   flex-direction: row;
   height: 350px;
-/*
-  justify-content: center;
-  align-items: center;
-*/
   justify-content: flex-start;
-/* align-items: flex-start; */
   width: 100%;
-  /* margin: 0 auto; */
 }
 
 .pictureAnswerForm {
@@ -284,24 +261,16 @@ html, body {
   flex-direction: row;
   flex-wrap: wrap;
   height: 300px;
-/*
-  justify-content: center;
-  align-items: center;
-*/
   justify-content: flex-start;
-  /* align-items: flex-start; */
-  /*width: 500px; */
   width: 90%;
-  /* margin: 0 auto; */
 }
 
 .pictureAnswers {
   height: 80%;
   display: block;
   text-align: center;
-  /* width: 30%; */
-  width: 20%;
-  margin: 0 30px;
+  width: 25%;
+  margin: 0 20px;
 }
 
 .pictureAnswers .left {
@@ -309,6 +278,10 @@ html, body {
     position: relative;
     left: -20px;
     top: 20px;
+}
+
+.pictureAnswers img {
+	padding: 5px;
 }
 
 .pictureAnswers img:hover {
@@ -331,11 +304,11 @@ html, body {
 
 .resultsContainer .topLeft {
     font-family: Georgia, Serif;
-        position: absolute;
-        top: 5px;
-        left: 5px;
-        font-size: 1.5em;
-        color: darkviolet;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	font-size: 1.5em;
+	color: darkviolet;
 }
 
 .resultsContainer p {
@@ -382,17 +355,15 @@ html, body {
   overflow-y: auto;
 }
 
-@media (max-width: 850px)  {
+@media (max-width: 550px)  {
+	
 	.questionContainer {
-		font-size: 1.5em;
+		font-size: 1.2em;
 	}
 	
 	.button, button {
 		width: 150px;
 	}
-}
-
-@media (max-width: 550px)  {
 	
 	.homeContainer .quizChoices {
 		flex-direction: column;
@@ -427,8 +398,7 @@ html, body {
 	}
 	
 	.questionBody {
-	/*	position: absolute; */
-		overflow-y: auto;
+		overflow-y: auto; 
 		top: 0;
 		width: 100%;
 		height: 100%;
@@ -458,6 +428,7 @@ html, body {
 	
 	.pictureAnswers {
 		margin: 0 40px;
+		height: initial;
 	}
 	
 	.pictureAnswerContainer {
