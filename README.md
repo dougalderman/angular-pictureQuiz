@@ -11,7 +11,7 @@ This app is a online quiz with the option of using a picture as part of the ques
  git clone https://github.com/dougalderman/angular-pictureQuiz.git
 
 ##Design Goals
-This app is intended to provide the user with a visually-appealing online quiz experience. It can be used on its own or integrated into a separate site. A possible use case is an addition to an informational website that will provide interactivity without requiring login or server code.
+This app is intended to provide the user with an online picture quiz experience. It can be used on its own or integrated into a separate site. A possible use case is an addition to an informational website that will provide interactivity without requiring login or server code.
 
 ##Detailed Usage
 
