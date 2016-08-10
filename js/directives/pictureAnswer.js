@@ -25,7 +25,7 @@ angular.module('pictureQuiz')
             $scope.processUserInput = function(selection, whereFrom) {
                 if (!$scope.userAnswered) { // if haven't already answered question
                    if (selection) // if selection has value
-                        $scope.selection = $scope.options[selection].answer;
+                        $scope.selection = $scope.options[selection].id;
                     var temp = ((whereFrom === 'fromSelect') && $scope.autoSubmit);
                     var temp2 = ((whereFrom === 'fromSubmit') && !$scope.autoSubmit);
                     if (temp || temp2) {
