@@ -1,5 +1,7 @@
 angular.module('pictureQuiz')
 .controller('quizCtrl', function ($scope, quizService, dataUrl, $stateParams, $state, $interval) {
+	
+	var stop;
     
     console.log('in quizCtrl');
     
@@ -54,21 +56,17 @@ angular.module('pictureQuiz')
 		if ($scope.rightSide === 'giphy') {
             quizService.streamGiphys($scope.rightSideGiphyKeywords)
 		    .then(function(response) {
-				console.log(response, 'FROM MY CONTROLLER');
+				console.log(response, 'Giphys');
 				var giphyArrayLength = response.data.data.length;
 				if (giphyArrayLength) {
 					var i = 0;
 					$scope.rightSideGiphy = response.data.data[i].images.downsized_medium.url;
-					console.log('$scope.rightSideGiphy = ' + $scope.rightSideGiphy);
-					$interval(function() {
+					stop = $interval(function() {
 						i++;
 						if (i >= giphyArrayLength) {
 							i = 0 // reset to 0 if at end of array
 						}
-						console.log('in $interval');
-						console.log('i = ' + i);
 						$scope.rightSideGiphy = response.data.data[i].images.downsized_medium.url;
-						console.log('$scope.rightSideGiphy = '+ $scope.rightSideGiphy);
 					}, 7000);
 				}
 			})
@@ -101,6 +99,11 @@ angular.module('pictureQuiz')
             return;
                  }
          else { // completed all questions
+			if (angular.isDefined(stop)) {
+				console.log('cancel interval');
+				$interval.cancel(stop);
+            	stop = undefined;
+          	}
              $scope.endTimeObject = new Date();
              $scope.secondsElapsed = Math.floor(($scope.endTimeObject.getTime() - $scope.startTimeObject.getTime()) / 1000);
              $state.go('Results', {
