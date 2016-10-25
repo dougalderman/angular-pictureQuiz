@@ -95,7 +95,7 @@ Each quiz has its own json file with configuration options and specifications of
 There are 4 configuration options:
 
  - randomizeQuestionSequence--if set to true, uses the Durstenfeld  shuffle algorithm to randomize the question sequence. Otherwise shows questions in the order they were specified in the .json file.
- - autoSubmit--if set to true, automatically submits client's selection (with the exception of short answers, which wait for user to hit a submit button). Otherwise has user click a submit button after selecting the option (with the exception of picture answers, which are automatically submitted when clicked).
+ - autoSubmit--if set to true, automatically submits client's selection (with the exception of short answers, which wait for user to hit a submit button). Otherwise has user click a submit button after selecting the option.
  - percentGreatJob--this is the % correct that is needed to display the giphy corresponding to CSS class giphy-great-job in the results page. If % is below this level, then giphy-ok-job will be displayed.
  - rightSide (optional)--set to 'giphy' to display a stream of giphys in the right side of the quiz page. If blank, or the option doesn't exist, the right side will be blank.
  - rightSideGiphyKeywords (optional)--set to the keyword to use for calling the Giphy API for the right side giphy stream. If blank, or this option doesn't exist, giphy will default to using the keywords in the "title" property.
@@ -287,37 +287,43 @@ processUserInput() is the directive function that handles the user input. It che
 ```javascript
 $scope.getNextQuestion = function() {
         
-	var i = $scope.currentQuestion - 1; // index one less than question #
-	if (i < $scope.numQuestions - 1) { // if not at end
-	    $scope.questionId = $scope.questions[i + 1].id;
-	    $scope.questionType = $scope.questions[i + 1].type; 
-	    $scope.question = $scope.questions[i + 1].question;
-	    $scope.correctAnswer = $scope.questions[i + 1].correctAnswer;
-	    $scope.correctAnswerArray = $scope.questions[i + 1].correctAnswerArray;
-	    $scope.pictureQuestion = $scope.questions[i + 1].pictureQuestion;
-	    $scope.options = $scope.questions[i + 1].options; 
-	    $scope.currentQuestion++;
-	    $scope.userAnswered = false;
-	    $scope.userAnsweredCorrectly = false;
-	    $scope.borderOn = [];
-	    $scope.borderOnYes = false;
-	    $scope.borderOnNo = false;
-	    
-	    $scope.gotoTop(0);
-	    
-	    return;
-	 }
-	 else { // completed all questions
-	     $scope.endTimeObject = new Date();
-	     $scope.secondsElapsed = Math.floor(($scope.endTimeObject.getTime() - $scope.startTimeObject.getTime()) / 1000);
-	     $state.go('Results', {
-	         title: $scope.title,
-	         secondsElapsed: $scope.secondsElapsed, 
-	         userCorrectArray: $scope.userCorrect,
-		 percentGreatJob: $scope.percentGreatJob
-	     });
-	 }
-}
+        var i = $scope.currentQuestion - 1; // index one less than question #
+        if (i < $scope.numQuestions - 1) { // if not at end
+            $scope.questionId = $scope.questions[i + 1].id;
+            $scope.questionType = $scope.questions[i + 1].type; 
+            $scope.question = $scope.questions[i + 1].question;
+            $scope.correctAnswer = $scope.questions[i + 1].correctAnswer;
+            $scope.correctAnswerArray = $scope.questions[i + 1].correctAnswerArray;
+            $scope.pictureQuestion = $scope.questions[i + 1].pictureQuestion;
+            $scope.options = $scope.questions[i + 1].options; 
+            $scope.currentQuestion++;
+            $scope.userAnswered = false;
+            $scope.userAnsweredCorrectly = false;
+			$scope.borderOn = [];
+			$scope.borderOnYes = false;
+			$scope.borderOnNo = false;
+            
+            $scope.gotoTop(0);
+            
+            return;
+                 }
+         else { // completed all questions
+			if (angular.isDefined(stop)) {
+				console.log('cancel interval');
+				$interval.cancel(stop);
+            	stop = undefined;
+          	}
+             $scope.endTimeObject = new Date();
+             $scope.secondsElapsed = Math.floor(($scope.endTimeObject.getTime() - $scope.startTimeObject.getTime()) / 1000);
+             $state.go('Results', {
+                 title: $scope.title,
+                 secondsElapsed: $scope.secondsElapsed, 
+                 userCorrectArray: $scope.userCorrect,
+				 percentGreatJob: $scope.percentGreatJob
+             });
+         }
+       
+    }
 ```    
 
 Here is a screen shot of an example of the picture answer question type in the US Presidents quiz:
