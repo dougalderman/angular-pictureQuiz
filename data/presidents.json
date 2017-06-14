@@ -93,17 +93,17 @@
     },
 	{
       "id":      8,
-      "question": "Which president(s) lost the popular vote but was elected anyway",
+      "question": "Name all the presidents who lost the popular vote but were elected anyway",
       "type":     "textMultipleChoice",
 	  "options": [
             { "id": "a", "answer": "John Quincy Adams"},
-            { "id": "b", "answer": "Harry Truman" },
-            { "id": "c", "answer": "John Adams"},
-			{ "id": "d", "answer": "George W. Bush"},
-			{ "id": "e", "answer": "John Quincy Adams and George W. Bush"},
-			{ "id": "f", "answer": "John Quincy Adams, Harry Truman, and George W. Bush"}
+            { "id": "b", "answer": "George W. Bush and Donald Trump" },
+            { "id": "c", "answer": "Rutherford B. Hayes and Donald Trump"},
+			{ "id": "d", "answer": "John Quincy Adams, Harry Truman, Benjamin Harrison, George W. Bush, and Donald Trump"},
+			{ "id": "e", "answer": "John Quincy Adams, Rutherford B. Hayes, Benjamin Harrison, George W. Bush, and Donald Trump"},
+			{ "id": "f", "answer": "John Quincy Adams, Rutherford B. Hayes, Harry Truman, and Donald Trump"}
 	  ],		
-      "correctAnswer": "John Quincy Adams and George W. Bush"
+      "correctAnswer": "John Quincy Adams, Rutherford B. Hayes, Benjamin Harrison, George W. Bush, and Donald Trump"
     },
 	{
       "id":      9,

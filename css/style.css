@@ -11,7 +11,7 @@ html, body {
  /*   height: 150vh; */
     height: 100vh;
     width: 100vw;
-    background-color: rgba(0, 117, 255, 0.66);
+    background-color: rgb(0, 115, 255);
     font-family: Helvetica, sans-serif;
  /*   position: relative; */
     position: fixed;
@@ -78,7 +78,7 @@ html, body {
 
 .questionContainer {
 	display: flex;
-    height: 100vh;
+    height: 120vh;
     width: 100vw; 
     background-color: rgba(210, 180, 140, 0.47);
     font-family: "Times New Roman", serif;
@@ -91,7 +91,8 @@ html, body {
 	height: 70px;
 	line-height: 70px;
 	width: 100%;
-    background-color: rgba(0, 117, 255, 0.66);
+    background-color: rgb(0, 115, 255);
+	z-index: 1;
  }
 
 .questionHeader .topLeft {
@@ -126,6 +127,7 @@ html, body {
 	top: 80px;
 	width: 75%;
 	padding-left: 5px;
+	overflow-y: auto;
 }
 
 .right-side {
@@ -135,7 +137,7 @@ html, body {
 	width: 25%;
 	text-align: center;
 	font-family: Georgia, serif;
-	color: rgba(0, 117, 255, 0.66);
+	color: rgb(0, 115, 255);
 }
 
 .answerContainer {
@@ -154,7 +156,7 @@ html, body {
 .bool_answer {
     height: 40px;
     width: 80px;
-	background-color: rgba(0, 117, 255, 0.66);
+	background-color: rgb(0, 115, 255);
     color: #fff;
     position: absolute;
     text-align: center;
@@ -174,7 +176,7 @@ html, body {
 }
 
 .multiple_choice_options {
-	background-color: rgba(0, 117, 255, 0.66);
+	background-color: rgb(0, 115, 255);
     color: #fff;
     text-align: center;
     line-height: 40px; 
@@ -296,7 +298,7 @@ html, body {
 .resultsContainer {
     height: 100vh;
     width: 100vw;
-    background-color: rgba(0, 117, 255, 0.66);
+    background-color: rgb(0, 115, 255);
     font-family: Helvetica, sans-serif;
     position: fixed;
     padding-left: 5px;
@@ -398,7 +400,7 @@ html, body {
 	}
 	
 	.questionBody {
-		overflow-y: auto; 
+		/* overflow-y: auto; */
 		top: 0;
 		width: 100%;
 		height: 100%;
