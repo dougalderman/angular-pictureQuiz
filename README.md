@@ -51,16 +51,16 @@ Each quiz has its own json file with configuration options and specifications of
   "briefName": 	"presidents",
   "title":      "US Presidents",
   "config": {
-      "randomizeQuestionSequence": false,
-      "autoSubmit": false,
-      "percentGreatJob": 60,
-      "rightSide": "giphy"
+    "randomizeQuestionSequence": false,
+    "autoSubmit": false,
+    "percentGreatJob": 60,
+    "rightSide": "giphy"
   },
   "questions": [
     {
       "id":      0,
       "question": "This president pictured was the fourth president",
-	  "pictureQuestion":  "images/Thomas_Jefferson.jpg",
+      "pictureQuestion":  "images/Thomas_Jefferson.jpg",
       "type":     "pictureQuestionTrueFalse",
       "correctAnswer": "False"
     },
@@ -68,28 +68,26 @@ Each quiz has its own json file with configuration options and specifications of
       "id":      1,
       "question": "Select the year Franklin D. Roosevelt first took office as president",
       "type":     "textMultipleChoice",
-	  "options": [
-            { "id": "a", "answer": "1932"},
-            { "id": "b", "answer": "1929"},
-            { "id": "c", "answer": "1935"},
-            { "id": "d", "answer": "1933"}
-	  ],		
+      "options": [
+        { "id": "a", "answer": "1932"},
+        { "id": "b", "answer": "1929"},
+        { "id": "c", "answer": "1935"},
+        { "id": "d", "answer": "1933"}
+      ],
       "correctAnswer": "1933"
     },
     {
       "id":      2,
       "question": "Click on the picture of the President who was NOT assassinated while in office",
       "type":     "pictureAnswer",
-	  "options": [
-            { "id": "a", "pictureAnswer": "images/William_McKinley.jpg"},
-            { "id": "b", "pictureAnswer": "images/Abraham_Lincoln.jpg"},
-            { "id": "c", "pictureAnswer": "images/Grover_Cleveland.jpg" },
-            { "id": "d", "pictureAnswer": "images/John_F_Kennedy.jpg"}
-	  ],		
+      "options": [
+        { "id": "a", "pictureAnswer": "images/William_McKinley.jpg"},
+        { "id": "b", "pictureAnswer": "images/Abraham_Lincoln.jpg"},
+        { "id": "c", "pictureAnswer": "images/Grover_Cleveland.jpg" },
+        { "id": "d", "pictureAnswer": "images/John_F_Kennedy.jpg"}
+      ],
       "correctAnswer": "c"
-    }
-  ]
-}
+    },
 ```	
     
 There are 4 configuration options:
@@ -130,36 +128,33 @@ The main UI Router application logic is in app.js:
 angular.module('pictureQuiz', ['ui.router', 'ngAnimate'])
 .constant('dataUrl', {'url': 'data/'})
 .config(function ($stateProvider, $urlRouterProvider) {
+  // routing configuration code
+  $urlRouterProvider
+    .otherwise('/');
 
-    // routing configuration code
-
-    $urlRouterProvider
-      .otherwise('/');
-
-      $stateProvider
-  	    .state('Home', {
-  			    templateUrl: 'html/routes/homeTmpl.html',
-  			    url: '/',
-                controller: 'homeCtrl'
-  		})
-        .state('Quiz', {
-  			    templateUrl: 'html/routes/quizTmpl.html',
-  			    url: '/quiz/:quizBriefName',
-            controller: 'quizCtrl',
-        })
-        .state('Results', {
-            templateUrl: 'html/routes/resultsTmpl.html',
-            url: '/results',
-            params : {
-                title: '',
-                secondsElapsed: 0,
-                userCorrectArray: [],
-		percentGreatJob: 0
-            },
-            controller: 'resultsCtrl'
-        });
+  $stateProvider
+    .state('Home', {
+      templateUrl: 'html/routes/homeTmpl.html',
+      url: '/',
+      controller: 'homeCtrl'
+    })
+    .state('Quiz', {
+      templateUrl: 'html/routes/quizTmpl.html',
+      url: '/quiz/:quizBriefName',
+      controller: 'quizCtrl',
+    })
+    .state('Results', {
+      templateUrl: 'html/routes/resultsTmpl.html',
+      url: '/results',
+      params : {
+        title: '',
+        secondsElapsed: 0,
+        userCorrectArray: [],
+        percentGreatJob: 0
+      },
+      controller: 'resultsCtrl'
+    });
 });
-
 ```
 As can be seen from the code, each route has its own controller and templateUrl. 
 
@@ -179,16 +174,14 @@ The quiz controller first calls a service function to do an $http request to rea
 
 ```html
 <div class="questionContainer">
-    
-    <div class="questionHeader">
-        <div class="topLeft">{{title}} Quiz</div>
-        <div class="topRight">Question {{currentQuestion}} of {{numQuestions}}</div>
-    </div>
+  <div class="questionHeader">
+    <div class="topLeft">{{title}} Quiz</div>
+    <div class="topRight">Question {{currentQuestion}} of {{numQuestions}}</div>
+  </div>
 
-    <div class="questionBody">
-        <picture-answer title="{{title}}" auto-submit="autoSubmit" num-questions="{{numQuestions}}" current-question="{{currentQuestion}}" question-id="questionId" question="{{question}}" options= "options" correct-answer="{{correctAnswer}}" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion()" goto-top = "gotoTop(numPixels)" ng-show="questionType === 'pictureAnswer'"></picture-answer>
-
-        <picture-question-multiple-choice title="{{title}}" auto-submit="autoSubmit" num-questions="{{numQuestions}}" current-question="{{currentQuestion}}" question-id="questionId" question="{{question}}" options= "options" correct-answer="{{correctAnswer}}" picture-question="{{pictureQuestion}}" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion()" border-on="borderOn" goto-top = "gotoTop(numPixels)" ng-show="questionType === 'pictureQuestionMultipleChoice'"></picture-question-multiple-choice>
+  <div class="questionBody">
+    <picture-answer title="{{title}}" auto-submit="autoSubmit" num-questions="{{numQuestions}}" current-question="{{currentQuestion}}" question-id="questionId" question="{{question}}" options= "options" correct-answer="{{correctAnswer}}" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion()" border-on="borderOn" goto-top = "gotoTop(numPixels)" ng-show="questionType === 'pictureAnswer'"></picture-answer>
+    <picture-question-multiple-choice title="{{title}}" auto-submit="autoSubmit" num-questions="{{numQuestions}}" current-question="{{currentQuestion}}" question-id="questionId" question="{{question}}" options= "options" correct-answer="{{correctAnswer}}" picture-question="{{pictureQuestion}}" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion()" border-on="borderOn" goto-top = "gotoTop(numPixels)" ng-show="questionType === 'pictureQuestionMultipleChoice'"></picture-question-multiple-choice>
 ```
 
 In the screen shot below, the pictureQuestionTrueFalse directive is active. Notice also the right side giphy.
@@ -201,129 +194,122 @@ Each directive handles the user experience for its question type. For example, h
 <div>{{question}}</div>
 <br>
 <div class="pictureAnswerContainer">
-	<form class="pictureAnswerForm" ng-submit="processUserInput(answer, 'fromSubmit')">
-		<div class="pictureAnswers" ng-repeat = "option in options">
-			<div class="left"> {{option.id}}) </div>
-			 <img ng-src="{{option.pictureAnswer}}" ng-class="{black_border: borderOn[$index]}" ng-click="processUserInput($index, 'fromSelect')" alt="President Image" width="130">
-		 </div>
-		<input class="button multiple_choice_button" type="submit" value="Submit" ng-hide="autoSubmit">
-	</form>
-    <div class="afterSubmit">
-        <div class="green" ng-show="userAnswered && userAnsweredCorrectly">
-            You got it right!! Great job!!
-        </div>
-        <div class="red" ng-show="userAnswered && !userAnsweredCorrectly">
-            Sorry, the correct answer is "{{correctAnswer}}"
-        </div>
-        <br>
-        <button ng-show="userAnswered" ng-click="getNextQuestion()">Next</button>
+  <form class="pictureAnswerForm" ng-submit="processUserInput(answer, 'fromSubmit')">
+    <div class="pictureAnswers" ng-repeat = "option in options">
+      <div class="left"> {{option.id}})</div>
+      <img ng-src="{{option.pictureAnswer}}" ng-class="{black_border: borderOn[$index]}" ng-click="processUserInput($index, 'fromSelect')" alt="President Image" width="130">
     </div>
+    <input class="button multiple_choice_button" type="submit" value="Submit" ng-hide="autoSubmit">
+  </form>
+  <div class="afterSubmit">
+    <div class="green" ng-show="userAnswered && userAnsweredCorrectly">
+      You got it right!! Great job!!
+    </div>
+    <div class="red" ng-show="userAnswered && !userAnsweredCorrectly">
+      Sorry, the correct answer is "{{correctAnswer}}"
+    </div>
+    <br>
+    <button ng-show="userAnswered" ng-click="getNextQuestion()">Next</button>
+  </div>
 </div>
-
-
-
 ```
 
 Here is the corresponding directive script:
 ```javascript
 angular.module('pictureQuiz')
 .directive('pictureAnswer', function() {
-    return {
-        restrict: 'E',
-        templateUrl: 'html/directives/pictureAnswer.html', 
-        scope: {
-            title: '@',
-            autoSubmit: '=',
-            numQuestions: '@',
-            currentQuestion: '@',
-            questionId: '=',
-            question: '@',
-            options: '=',
-            correctAnswer: '@',
-            userCorrect: '=',
-            userAnswered: '=',
-            userAnsweredCorrectly: '=',
-            getNextQuestion: '&',
-			borderOn: '=',
-            gotoTop: '&'
-        },
-        controller: function($scope) {
-            $scope.userAnswered = false;
-            $scope.userAnsweredCorrectly = false;
-            $scope.processUserInput = function(selection, whereFrom) {
-                if (!$scope.userAnswered) { // if haven't already answered question
-                   if (selection) // if selection has value
-                        $scope.selection = $scope.options[selection].id;
-                    var temp = ((whereFrom === 'fromSelect') && $scope.autoSubmit);
-                    var temp2 = ((whereFrom === 'fromSubmit') && !$scope.autoSubmit);
-                    if (temp || temp2) {
-                        $scope.userAnswered = true;
-                        if ($scope.selection === $scope.correctAnswer) {
-                            $scope.userCorrect[$scope.questionId] = true;
-                            $scope.userAnsweredCorrectly = true;
-                        }
-                        else {
-                            $scope.userCorrect[$scope.questionId] = false;
-                            $scope.userAnsweredCorrectly = false;
-                        }
-			$scope.gotoTop({numPixels: 0});
-                   }
-		   else { // selected but not submitted / autosubmit
-			for (var i = 0; i < $scope.options.length; i++) {
-				$scope.borderOn[i] = false; // initialize to false for all options
-			}
-			$scope.answer = selection;
-			$scope.borderOn[selection] = true;
-		   }
-                }    
-            }    
+  return {
+    restrict: 'E',
+    templateUrl: 'html/directives/pictureAnswer.html',
+    scope: {
+      title: '@',
+      autoSubmit: '=',
+      numQuestions: '@',
+      currentQuestion: '@',
+      questionId: '=',
+      question: '@',
+      options: '=',
+      correctAnswer: '@',
+      userCorrect: '=',
+      userAnswered: '=',
+      userAnsweredCorrectly: '=',
+      getNextQuestion: '&',
+      borderOn: '=',
+      gotoTop: '&'
+    },
+    controller: function($scope) {
+      $scope.userAnswered = false;
+      $scope.userAnsweredCorrectly = false;
+      $scope.processUserInput = function(selection, whereFrom) {
+        if (!$scope.userAnswered) { // if haven't already answered question
+          if (selection) { // if selection has value
+            $scope.selection = $scope.options[selection].id;
+          }
+          var temp = ((whereFrom === 'fromSelect') && $scope.autoSubmit);
+          var temp2 = ((whereFrom === 'fromSubmit') && !$scope.autoSubmit);
+          if (temp || temp2) {
+            $scope.userAnswered = true;
+            if ($scope.selection === $scope.correctAnswer) {
+              $scope.userCorrect[$scope.questionId] = true;
+              $scope.userAnsweredCorrectly = true;
+            }
+            else {
+              $scope.userCorrect[$scope.questionId] = false;
+              $scope.userAnsweredCorrectly = false;
+            }
+            $scope.gotoTop({numPixels: 0});
+          }
+          else { // selected but not submitted / autosubmit
+            for (var i = 0; i < $scope.options.length; i++) {
+              $scope.borderOn[i] = false; // initialize to false for all options
+            }
+            $scope.answer = selection;
+            $scope.borderOn[selection] = true;
+          }
         }
+      }
     }
+  }
 });
 ```
 
 processUserInput() is the directive function that handles the user input. It checks if the answer is correct, and updates $scope.userCorrect array, which is the array quizCtrl.js uses to track right or wrong answers for the quiz. Div class="afterSubmit" in the template handles letting the user know whether his answer is correct or incorrect. The user is in control of going to the next question by clicking the "Next" button. This button calls quizCtrl.js function getNextQuestion():
 
 ```javascript
-$scope.getNextQuestion = function() {
-        
-        var i = $scope.currentQuestion - 1; // index one less than question #
-        if (i < $scope.numQuestions - 1) { // if not at end
-            $scope.questionId = $scope.questions[i + 1].id;
-            $scope.questionType = $scope.questions[i + 1].type; 
-            $scope.question = $scope.questions[i + 1].question;
-            $scope.correctAnswer = $scope.questions[i + 1].correctAnswer;
-            $scope.correctAnswerArray = $scope.questions[i + 1].correctAnswerArray;
-            $scope.pictureQuestion = $scope.questions[i + 1].pictureQuestion;
-            $scope.options = $scope.questions[i + 1].options; 
-            $scope.currentQuestion++;
-            $scope.userAnswered = false;
-            $scope.userAnsweredCorrectly = false;
-			$scope.borderOn = [];
-			$scope.borderOnYes = false;
-			$scope.borderOnNo = false;
-            
-            $scope.gotoTop(0);
-            
-            return;
-                 }
-         else { // completed all questions
-			if (angular.isDefined(stop)) {
-				console.log('cancel interval');
-				$interval.cancel(stop);
-            	stop = undefined;
-          	}
-             $scope.endTimeObject = new Date();
-             $scope.secondsElapsed = Math.floor(($scope.endTimeObject.getTime() - $scope.startTimeObject.getTime()) / 1000);
-             $state.go('Results', {
-                 title: $scope.title,
-                 secondsElapsed: $scope.secondsElapsed, 
-                 userCorrectArray: $scope.userCorrect,
-				 percentGreatJob: $scope.percentGreatJob
-             });
-         }
-       
+ $scope.getNextQuestion = function() {
+    var i = $scope.currentQuestion - 1; // index one less than question #
+    if (i < $scope.numQuestions - 1) { // if not at end
+      $scope.questionId = $scope.questions[i + 1].id;
+      $scope.questionType = $scope.questions[i + 1].type;
+      $scope.question = $scope.questions[i + 1].question;
+      $scope.correctAnswer = $scope.questions[i + 1].correctAnswer;
+      $scope.correctAnswerArray = $scope.questions[i + 1].correctAnswerArray;
+      $scope.pictureQuestion = $scope.questions[i + 1].pictureQuestion;
+      $scope.options = $scope.questions[i + 1].options;
+      $scope.currentQuestion++;
+      $scope.userAnswered = false;
+      $scope.userAnsweredCorrectly = false;
+      $scope.borderOn = [];
+      $scope.borderOnYes = false;
+      $scope.borderOnNo = false;
+      $scope.gotoTop(0);
+      return;
     }
+    else { // completed all questions
+      if (angular.isDefined(stop)) {
+        $interval.cancel(stop);
+        stop = undefined;
+      }
+      $scope.endTimeObject = new Date();
+      $scope.secondsElapsed = Math.floor(($scope.endTimeObject.getTime() - $scope.startTimeObject.getTime()) / 1000);
+      $state.go('Results', {
+         title: $scope.title,
+         secondsElapsed: $scope.secondsElapsed,
+         userCorrectArray: $scope.userCorrect,
+         percentGreatJob: $scope.percentGreatJob
+      });
+    }
+  }
 ```    
 
 Here is a screen shot of an example of the picture answer question type in the US Presidents quiz:
@@ -337,24 +323,21 @@ After completing all the questions in the quiz, a $state.go statement() changes 
 ```javascript
 angular.module('pictureQuiz')
 .controller('resultsCtrl', function ($scope, quizService, $stateParams) {
-    
-    $scope.title = $stateParams.title;
-	$scope.percentGreatJob = $stateParams.percentGreatJob;
-    
-    $scope.numQuestions = $stateParams.userCorrectArray.length;
-	$scope.numCorrect = 0;
-    for (var i = 0; i < $scope.numQuestions; i++) {
-         if ($stateParams.userCorrectArray[i] === true)
-             $scope.numCorrect++;
-    } 
-    
-    
-    $scope.percentCorrect = 0;
-    if ($scope.numQuestions != 0)
-        $scope.percentCorrect = Math.round(($scope.numCorrect / $scope.numQuestions) * 100);
-    
-    $scope.secondsElapsed = $stateParams.secondsElapsed;
-    
+  $scope.title = $stateParams.title;
+  $scope.percentGreatJob = $stateParams.percentGreatJob;
+  $scope.numQuestions = $stateParams.userCorrectArray.length;
+  $scope.numCorrect = 0;
+
+  for (var i = 0; i < $scope.numQuestions; i++) {
+    if ($stateParams.userCorrectArray[i] === true)
+      $scope.numCorrect++;
+  }
+
+  $scope.percentCorrect = 0;
+  if ($scope.numQuestions !== 0) {
+    $scope.percentCorrect = Math.round(($scope.numCorrect / $scope.numQuestions) * 100);
+  }
+  $scope.secondsElapsed = $stateParams.secondsElapsed;
 });
 ```
 
@@ -363,27 +346,28 @@ If $scope.percentCorrect >= $scope.percentGreatJob (set in the configuration jso
 ```javascript
 angular.module('pictureQuiz')
 .directive('animateOnLoad', function($animateCss) {
-    return {
-        restrict: 'A',
-		scope: {
-            percentCorrect: '=',
-			percentGreatJob: '='
-		},
-        link: function(scope, elem, attrs) {
-			var className = '';
-			if (scope.percentCorrect >= scope.percentGreatJob)
-				className = 'giphy-great-job';
-			else 
-				className = 'giphy-ok-job';
-			
-			$animateCss(elem, {
-				'event': 'enter',
-				structural: true,
-				addClass: className
-			}).start();
-           
-        }
+  return {
+    restrict: 'A',
+    scope: {
+      percentCorrect: '=',
+      percentGreatJob: '='
+    },
+    link: function(scope, elem, attrs) {
+      var className = '';
+      if (scope.percentCorrect >= scope.percentGreatJob) {
+        className = 'giphy-great-job';
+      }
+      else {
+        className = 'giphy-ok-job';
+      }
+
+      $animateCss(elem, {
+        'event': 'enter',
+        structural: true,
+        addClass: className
+      }).start();
     }
+  }
 });
 ```
 
@@ -391,25 +375,25 @@ style.css sets the appropriate great job or ok job giphy background-image depend
 
 ```css
 .resultsContainer .giphy {
-    margin-top: 30px;
-    width: 300px;
-    height: 200px;
+  margin-top: 30px;
+  width: 300px;
+  height: 200px;
 }
 
 .resultsContainer .giphy-great-job.ng-enter {
-    transition: transform 7s ease-in;
-    background-image: url("https://media.giphy.com/media/iabcSfUB6VZYc/giphy.gif"); 
-    background-size: cover; 
+  transition: transform 7s ease-in;
+  background-image: url("https://media.giphy.com/media/iabcSfUB6VZYc/giphy.gif");
+  background-size: cover;
 }
 
 .resultsContainer .giphy-ok-job.ng-enter {
-    transition: transform 7s ease-in;
-    background-image: url("https://media.giphy.com/media/aLdiZJmmx4OVW/giphy.gif"); 
-    background-size: cover; 
+  transition: transform 7s ease-in;
+  background-image: url("https://media.giphy.com/media/aLdiZJmmx4OVW/giphy.gif");
+  background-size: cover;
 }
 
 .resultsContainer .giphy-great-job.ng-enter.ng-enter-active, .resultsContainer .giphy-ok-job.ng-enter.ng-enter-active {
-    transform: perspective(400px) rotateX(90deg);
+  transform: perspective(400px) rotateX(90deg);
 }
 ```
 
