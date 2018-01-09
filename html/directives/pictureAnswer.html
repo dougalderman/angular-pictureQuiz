@@ -1,23 +1,21 @@
 <div>{{question}}</div>
 <br>
 <div class="pictureAnswerContainer">
-	<form class="pictureAnswerForm" ng-submit="processUserInput(answer, 'fromSubmit')">
-		<div class="pictureAnswers" ng-repeat = "option in options">
-			<div class="left"> {{option.id}}) </div>
-			 <img ng-src="{{option.pictureAnswer}}" ng-class="{black_border: borderOn[$index]}" ng-click="processUserInput($index, 'fromSelect')" alt="President Image" width="130">
-		 </div>
-		<input class="button multiple_choice_button" type="submit" value="Submit" ng-hide="autoSubmit">
-	</form>
-    <div class="afterSubmit">
-        <div class="green" ng-show="userAnswered && userAnsweredCorrectly">
-            You got it right!! Great job!!
-        </div>
-        <div class="red" ng-show="userAnswered && !userAnsweredCorrectly">
-            Sorry, the correct answer is "{{correctAnswer}}"
-        </div>
-        <br>
-        <button ng-show="userAnswered" ng-click="getNextQuestion()">Next</button>
+  <form class="pictureAnswerForm" ng-submit="processUserInput(answer, 'fromSubmit')">
+    <div class="pictureAnswers" ng-repeat = "option in options">
+      <div class="left"> {{option.id}})</div>
+      <img ng-src="{{option.pictureAnswer}}" ng-class="{black_border: borderOn[$index]}" ng-click="processUserInput($index, 'fromSelect')" alt="President Image" width="130">
     </div>
+    <input class="button multiple_choice_button" type="submit" value="Submit" ng-hide="autoSubmit">
+  </form>
+  <div class="afterSubmit">
+    <div class="green" ng-show="userAnswered && userAnsweredCorrectly">
+      You got it right!! Great job!!
+    </div>
+    <div class="red" ng-show="userAnswered && !userAnsweredCorrectly">
+      Sorry, the correct answer is "{{correctAnswer}}"
+    </div>
+    <br>
+    <button ng-show="userAnswered" ng-click="getNextQuestion()">Next</button>
+  </div>
 </div>
-
-

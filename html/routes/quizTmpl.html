@@ -1,31 +1,22 @@
 <div class="questionContainer">
-    
-    <div class="questionHeader">
-        <div class="topLeft">{{title}} Quiz</div>
-        <div class="topRight">Question {{currentQuestion}} of {{numQuestions}}</div>
-    </div>
+  <div class="questionHeader">
+    <div class="topLeft">{{title}} Quiz</div>
+    <div class="topRight">Question {{currentQuestion}} of {{numQuestions}}</div>
+  </div>
 
-    <div class="questionBody">
-        <picture-answer title="{{title}}" auto-submit="autoSubmit" num-questions="{{numQuestions}}" current-question="{{currentQuestion}}" question-id="questionId" question="{{question}}" options= "options" correct-answer="{{correctAnswer}}" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion()" border-on="borderOn" goto-top = "gotoTop(numPixels)" ng-show="questionType === 'pictureAnswer'"></picture-answer>
+  <div class="questionBody">
+    <picture-answer title="{{title}}" auto-submit="autoSubmit" num-questions="{{numQuestions}}" current-question="{{currentQuestion}}" question-id="questionId" question="{{question}}" options= "options" correct-answer="{{correctAnswer}}" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion()" border-on="borderOn" goto-top = "gotoTop(numPixels)" ng-show="questionType === 'pictureAnswer'"></picture-answer>
+    <picture-question-multiple-choice title="{{title}}" auto-submit="autoSubmit" num-questions="{{numQuestions}}" current-question="{{currentQuestion}}" question-id="questionId" question="{{question}}" options= "options" correct-answer="{{correctAnswer}}" picture-question="{{pictureQuestion}}" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion()" border-on="borderOn" goto-top = "gotoTop(numPixels)" ng-show="questionType === 'pictureQuestionMultipleChoice'"></picture-question-multiple-choice>
+    <picture-question-short-answer title="{{title}}" auto-submit="autoSubmit" num-questions="{{numQuestions}}" current-question="{{currentQuestion}}" question-id="questionId" question="{{question}}" correct-answer-array="correctAnswerArray" picture-question="{{pictureQuestion}}" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion()" ng-show="questionType === 'pictureQuestionShortAnswer'"></picture-question-short-answer>
+    <picture-question-true-false title="{{title}}" auto-submit="autoSubmit" num-questions="{{numQuestions}}" current-question="{{currentQuestion}}" question-id="questionId" question="{{question}}" correct-answer="{{correctAnswer}}" picture-question="{{pictureQuestion}}" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion()" border-on-yes="borderOnYes" border-on-no="borderOnNo" ng-show="questionType === 'pictureQuestionTrueFalse'"></picture-question-true-false>
+    <text-multiple-choice title="{{title}}" auto-submit="autoSubmit" num-questions="{{numQuestions}}" current-question="{{currentQuestion}}" question-id="questionId" question="{{question}}" options= "options" correct-answer="{{correctAnswer}}" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion()" border-on="borderOn" goto-top= "gotoTop(numPixels)" ng-show="questionType === 'textMultipleChoice'"></text-multiple-choice>
+    <text-short-answer title="{{title}}" auto-submit="autoSubmit" num-questions="{{numQuestions}}" current-question="{{currentQuestion}}" question-id="questionId" question="{{question}}" correct-answer-array="correctAnswerArray" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion()" ng-show="questionType === 'textShortAnswer'"></text-short-answer>
+    <text-true-false title="{{title}}" auto-submit="autoSubmit" num-questions="{{numQuestions}}" current-question="{{currentQuestion}}" question-id="questionId" question="{{question}}" correct-answer="{{correctAnswer}}" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion()" border-on-yes="borderOnYes" border-on-no="borderOnNo" ng-show="questionType === 'textTrueFalse'"></text-true-false>
+  </div>
 
-        <picture-question-multiple-choice title="{{title}}" auto-submit="autoSubmit" num-questions="{{numQuestions}}" current-question="{{currentQuestion}}" question-id="questionId" question="{{question}}" options= "options" correct-answer="{{correctAnswer}}" picture-question="{{pictureQuestion}}" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion()" border-on="borderOn" goto-top = "gotoTop(numPixels)" ng-show="questionType === 'pictureQuestionMultipleChoice'"></picture-question-multiple-choice>
-
-        <picture-question-short-answer title="{{title}}" auto-submit="autoSubmit" num-questions="{{numQuestions}}" current-question="{{currentQuestion}}" question-id="questionId" question="{{question}}" correct-answer-array="correctAnswerArray" picture-question="{{pictureQuestion}}" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion()" ng-show="questionType === 'pictureQuestionShortAnswer'"></picture-question-short-answer>
-
-        <picture-question-true-false title="{{title}}" auto-submit="autoSubmit" num-questions="{{numQuestions}}" current-question="{{currentQuestion}}" question-id="questionId" question="{{question}}" correct-answer="{{correctAnswer}}" picture-question="{{pictureQuestion}}" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion()" border-on-yes="borderOnYes" border-on-no="borderOnNo" ng-show="questionType === 'pictureQuestionTrueFalse'"></picture-question-true-false>
-
-        <text-multiple-choice title="{{title}}" auto-submit="autoSubmit" num-questions="{{numQuestions}}" current-question="{{currentQuestion}}" question-id="questionId" question="{{question}}" options= "options" correct-answer="{{correctAnswer}}" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion()" border-on="borderOn" goto-top= "gotoTop(numPixels)" ng-show="questionType === 'textMultipleChoice'"></text-multiple-choice>
-
-        <text-short-answer title="{{title}}" auto-submit="autoSubmit" num-questions="{{numQuestions}}" current-question="{{currentQuestion}}" question-id="questionId" question="{{question}}" correct-answer-array="correctAnswerArray" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion()" ng-show="questionType === 'textShortAnswer'"></text-short-answer>
-
-        <text-true-false title="{{title}}" auto-submit="autoSubmit" num-questions="{{numQuestions}}" current-question="{{currentQuestion}}" question-id="questionId" question="{{question}}" correct-answer="{{correctAnswer}}" user-correct="userCorrect" user-answered="userAnswered" user-answered-correctly="userAnsweredCorrectly" get-next-question="getNextQuestion()" border-on-yes="borderOnYes" border-on-no="borderOnNo" ng-show="questionType === 'textTrueFalse'"></text-true-false>
-
-    </div>
-	
-	<div class="right-side" ng-if="rightSide">
-		<img ng-src="{{rightSideGiphy}}" width="225">
-		<p>{{rightSideGiphyKeywords}}</p>
-		<img ng-src="images/Powered_By_Giphy.png" width="50">
-	</div>
-
+  <div class="right-side" ng-if="rightSide">
+    <img ng-src="{{rightSideGiphy}}" width="225">
+    <p>{{rightSideGiphyKeywords}}</p>
+    <img ng-src="images/Powered_By_Giphy.png" width="50">
+  </div>
 </div>

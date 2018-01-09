@@ -1,23 +1,25 @@
-<div class="picture"><img ng-src = "{{pictureQuestion}}" width="225" alt="President Image"></div>
+<div class="picture">
+  <img ng-src = "{{pictureQuestion}}" width="225" alt="President Image">
+</div>
 <div>{{question}}</div>
 <br>
 <div class="answerContainer">
-    <form ng-submit="processUserInput(answer, 'fromButton')">
-        <input type="text" ng-model="answer" placeholder="First name Last name">
-        <br><br>
-        <input class="button" type="submit" value="Submit">
-    </form>
-    <div class="afterSubmit">
-        <div class="green" ng-show="userAnswered && userAnsweredCorrectly">
-            You got it right!! Great job!!
-        </div>
-        <div class="red" ng-show="userAnswered && !userAnsweredCorrectly">
-            Sorry, 
-            <div ng-repeat = "answer in correctAnswerArray">
-                A correct answer is "{{answer}}"
-            </div>
-        </div>
-        <br>
-        <button ng-show="userAnswered" ng-click="getNextQuestion()">Next</button>
+  <form ng-submit="processUserInput(answer, 'fromButton')">
+    <input type="text" ng-model="answer" placeholder="First name Last name">
+    <br><br>
+    <input class="button" type="submit" value="Submit">
+  </form>
+  <div class="afterSubmit">
+    <div class="green" ng-show="userAnswered && userAnsweredCorrectly">
+      You got it right!! Great job!!
     </div>
+    <div class="red" ng-show="userAnswered && !userAnsweredCorrectly">
+      Sorry,
+      <div ng-repeat = "answer in correctAnswerArray">
+        A correct answer is "{{answer}}"
+      </div>
+    </div>
+    <br>
+    <button ng-show="userAnswered" ng-click="getNextQuestion()">Next</button>
+  </div>
 </div>

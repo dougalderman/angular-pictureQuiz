@@ -1,13 +1,12 @@
 <div class="resultsContainer">
-    <div class="resultsBody">
-        <div class="topLeft">{{title}} Quiz</div>
-        <br><br>
-        <p>Your score is: <span class="num">{{numCorrect}}</span> correct out of <span class="num">{{numQuestions}}</span> questions, or <span class="num">{{percentCorrect}}%</span>.
-        <br>
-        <p>You completed the test in: <span class="num">{{secondsElapsed}}</span> seconds.</p>
-        <br>
-        Return <a ui-sref="Home">Home</a>
-		<div class="giphy" animate-on-load percent-correct="percentCorrect" percent-great-job="percentGreatJob">
-    	</div>
-	</div>
+  <div class="resultsBody">
+    <div class="topLeft">{{title}} Quiz</div>
+    <br><br>
+    <p>Your score is: <span class="num">{{numCorrect}}</span> correct out of <span class="num">{{numQuestions}}</span> questions, or <span class="num">{{percentCorrect}}%</span>.</p>
+    <br>
+    <p>You completed the test in: <span class="num">{{secondsElapsed}}</span> seconds.</p>
+    <br>
+    Return <a ui-sref="Home">Home</a>
+    <div class="giphy" animate-on-load percent-correct="percentCorrect" percent-great-job="percentGreatJob"></div>
+  </div>
 </div>

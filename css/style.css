@@ -1,39 +1,35 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html, body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .homeContainer {
- /*   height: 150vh; */
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba(0, 117, 255, 0.66);
-    font-family: Helvetica, sans-serif;
- /*   position: relative; */
-    position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 117, 255, 0.66);
+  font-family: Helvetica, sans-serif;
+  position: fixed;
 }
 
 .homeContainer header {
-    text-align: center;
-    font-size: 2.1em;
-    color: rgba(255, 0, 0, 0.77);
+  text-align: center;
+  font-size: 2.1em;
+  color: rgba(255, 0, 0, 0.77);
 }
 
-
 .homeContainer .choice {
-    text-align: center;
-    font-size: 1.2em;
-    margin-top: 20px;
+  text-align: center;
+  font-size: 1.2em;
+  margin-top: 20px;
 }
 
 .homeContainer .quizChoices {
   display: flex;
   flex-direction: row;
- /*  height: 350px; */
   justify-content: center;
   align-items: center;
   width: 90%;
@@ -56,86 +52,83 @@ html, body {
 }
 
 .quiz .title {
-    font-size: 1.3em;
-    font-family: "Times New Roman";
-    text-align: center;
+  font-size: 1.3em;
+  font-family: "Times New Roman";
+  text-align: center;
 }
 
 .quiz .description {
-    font-size: 0.9em;
-    font-family: Arial;
+  font-size: 0.9em;
+  font-family: Arial;
 }
 
-
-
 .homeContainer footer {
-    width: 100%;
-    font-size: 0.7em;
-    position: absolute;
-    bottom: 0;
-    text-align: center;
+  width: 100%;
+  font-size: 0.7em;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
 }
 
 .questionContainer {
-	display: flex;
-    height: 100vh;
-    width: 100vw; 
-    background-color: rgba(210, 180, 140, 0.47);
-    font-family: "Times New Roman", serif;
-	font-size: 1em;
-	overflow-y: hidden;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(210, 180, 140, 0.47);
+  font-family: "Times New Roman", serif;
+  font-size: 1em;
+  overflow-y: hidden;
 }
 
 .questionHeader {
-	position: fixed;
-	height: 70px;
-	line-height: 70px;
-	width: 100%;
-    background-color: rgba(0, 117, 255, 0.66);
+  position: fixed;
+  height: 70px;
+  line-height: 70px;
+  width: 100%;
+  background-color: rgba(0, 117, 255, 0.66);
  }
 
 .questionHeader .topLeft {
-    font-family: Georgia, Serif;
-    position: absolute; 
-    left: 10px; 
-    font-size: 1.5em;
-	color: rgb(210, 180, 140);
-	font-weight: bold;
+  font-family: Georgia, Serif;
+  position: absolute;
+  left: 10px;
+  font-size: 1.5em;
+  color: rgb(210, 180, 140);
+  font-weight: bold;
 }
 
-
 .questionHeader .topRight {
-    font-family: Arial;
-    position: absolute;
-    right: 10px;
-    font-size: 0.9em;
-	color: rgb(139, 0, 0);
+  font-family: Arial;
+  position: absolute;
+  right: 10px;
+  font-size: 0.9em;
+  color: rgb(139, 0, 0);
 }
 
 .questionContainer .picture {
-    padding-top: 20px; 
-    padding-bottom: 10px;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 
 .questionContainer .textQuestion {
-    padding-top: 10px;
+  padding-top: 10px;
 }
 
 .questionBody {
-	position: relative;
-	top: 80px;
-	width: 75%;
-	padding-left: 5px;
+  position: relative;
+  top: 80px;
+  width: 75%;
+  padding-left: 5px;
 }
 
 .right-side {
-	position: relative;
-	top: 120px;
-	margin-right: 20px;
-	width: 25%;
-	text-align: center;
-	font-family: Georgia, serif;
-	color: rgba(0, 117, 255, 0.66);
+  position: relative;
+  top: 120px;
+  margin-right: 20px;
+  width: 25%;
+  text-align: center;
+  font-family: Georgia, serif;
+  color: rgba(0, 117, 255, 0.66);
 }
 
 .answerContainer {
@@ -146,106 +139,105 @@ html, body {
 }
 
 .bool_answer_container {
-    height: 40px;
-    width: 180px;
-    position: relative;
+  height: 40px;
+  width: 180px;
+  position: relative;
 }
 
 .bool_answer {
-    height: 40px;
-    width: 80px;
-	background-color: rgba(0, 117, 255, 0.66);
-    color: #fff;
-    position: absolute;
-    text-align: center;
-    line-height: 40px;
+  height: 40px;
+  width: 80px;
+  background-color: rgba(0, 117, 255, 0.66);
+  color: #fff;
+  position: absolute;
+  text-align: center;
+  line-height: 40px;
 }
 
 .bool_answer:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .left_bool {
-    left: 0;
+  left: 0;
 }
 
 .right_bool {
-    right: 0;
+  right: 0;
 }
 
 .multiple_choice_options {
-	background-color: rgba(0, 117, 255, 0.66);
-    color: #fff;
-    text-align: center;
-    line-height: 40px; 
-	padding: 0 20px;
-	margin: 10px 20px;
+  background-color: rgba(0, 117, 255, 0.66);
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+  padding: 0 20px;
+  margin: 10px 20px;
 }
 
 .multiple_choice_options:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .black_border_and_text {
-    border: 3px solid black;
-    color: black;
+  border: 3px solid black;
+  color: black;
 }
 
 .black_border {
-    border: 3px solid black;
+  border: 3px solid black;
 }
 
 .answerContainer form {
-    display: block;
-    width: 100%;
-    font-family: "Arial";
-    font-size: 0.9em;
+  display: block;
+  width: 100%;
+  font-family: "Arial";
+  font-size: 0.9em;
 }
 
 .answerContainer .multiple_choice {
-	display: flex;
-  	flex-direction: row;
-  	flex-wrap: wrap;
-} 
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
 .answerContainer .afterSubmit {
-    display: block;
-    width: 50%;
-    margin-left: 5px;
+  display: block;
+  width: 50%;
+  margin-left: 5px;
 }
 
 .answerContainer input[type="text"] {
-	height: 40px; 
-	width: 230px;
-	font-family: Arial;
-	font-size: 1.1em;
+  height: 40px;
+  width: 230px;
+  font-family: Arial;
+  font-size: 1.1em;
 }
 
 .button, button {
-	height: 50px;
-    width: 100px;
-    font-size: 1.1em;
-	font-family: Arial;
-	background-color: black;
-	color: white;
-	border: none;
+  height: 50px;
+  width: 100px;
+  font-size: 1.1em;
+  font-family: Arial;
+  background-color: black;
+  color: white;
+  border: none;
 }
 
 .multiple_choice_button {
-	margin-top: 10px;
+  margin-top: 10px;
 }
 
-
 .button:hover, button:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .red {
-    color: red;
+  color: red;
 }
 
 .green {
-    color: green;
+  color: green;
 }
 
 .pictureAnswerContainer {
@@ -274,78 +266,78 @@ html, body {
 }
 
 .pictureAnswers .left {
-    float: left; 
-    position: relative;
-    left: -20px;
-    top: 20px;
+  float: left;
+  position: relative;
+  left: -20px;
+  top: 20px;
 }
 
 .pictureAnswers img {
-	padding: 5px;
+  padding: 5px;
 }
 
 .pictureAnswers img:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .pictureAnswerContainer .afterSubmit {
-    width: 30%;
-    margin-right: 5px; 
+  width: 30%;
+  margin-right: 5px;
 }
 
 .resultsContainer {
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba(0, 117, 255, 0.66);
-    font-family: Helvetica, sans-serif;
-    position: fixed;
-    padding-left: 5px;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 117, 255, 0.66);
+  font-family: Helvetica, sans-serif;
+  position: fixed;
+  padding-left: 5px;
 }
 
 .resultsContainer .topLeft {
-    font-family: Georgia, Serif;
-	position: absolute;
-	top: 5px;
-	left: 5px;
-	font-size: 1.5em;
-	color: darkviolet;
+  font-family: Georgia, Serif;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  font-size: 1.5em;
+  color: darkviolet;
 }
 
 .resultsContainer p {
-    font-size: 0.8em;
-    color: white;
+  font-size: 0.8em;
+  color: white;
 }
 
 .resultsContainer span.num {
-    color: rgb(210, 106, 30);
-    font-weight: bold;
+  color: rgb(210, 106, 30);
+  font-weight: bold;
 }
 
 .resultsContainer a {
-    text-decoration: none;
-    color: darkgreen;
+  text-decoration: none;
+  color: darkgreen;
 }
 
 .resultsContainer .giphy {
-    margin-top: 30px;
-    width: 300px;
-    height: 200px;
+  margin-top: 30px;
+  width: 300px;
+  height: 200px;
 }
 
 .resultsContainer .giphy-great-job.ng-enter {
-    transition: transform 7s ease-in;
-    background-image: url("https://media.giphy.com/media/iabcSfUB6VZYc/giphy.gif"); 
-    background-size: cover; 
+  transition: transform 7s ease-in;
+  background-image: url("https://media.giphy.com/media/iabcSfUB6VZYc/giphy.gif");
+  background-size: cover;
 }
 
 .resultsContainer .giphy-ok-job.ng-enter {
-    transition: transform 7s ease-in;
-    background-image: url("https://media.giphy.com/media/aLdiZJmmx4OVW/giphy.gif"); 
-    background-size: cover; 
+  transition: transform 7s ease-in;
+  background-image: url("https://media.giphy.com/media/aLdiZJmmx4OVW/giphy.gif");
+  background-size: cover;
 }
 
 .resultsContainer .giphy-great-job.ng-enter.ng-enter-active, .resultsContainer .giphy-ok-job.ng-enter.ng-enter-active {
-    transform: perspective(400px) rotateX(90deg);
+  transform: perspective(400px) rotateX(90deg);
 }
 
 .resultsBody {
@@ -356,82 +348,81 @@ html, body {
 }
 
 @media (max-width: 550px)  {
-	
-	.questionContainer {
-		font-size: 1.2em;
-	}
-	
-	.button, button {
-		width: 150px;
-	}
-	
-	.homeContainer .quizChoices {
-		flex-direction: column;
-		padding-bottom: 60px;
-	}
-	
-	.quizChoices .quiz {
-		width: auto;
-	}
-	
-	.right-side {
-		display: none;
-	}
-	
-	.questionHeader {
-		height: 120px;
-		line-height: 120px;
-		margin-top: -120px;
-	}
-	
-	.questionHeader .topLeft {
-		position: static;
-		height: 70px;
-		line-height: 70px;
-		font-size: 1em;
-	}
-	
-	.questionHeader .topRight {
-		position: static;
-		height: 50px;
-		line-height: 50px;
-	}
-	
-	.questionBody {
-		overflow-y: auto; 
-		top: 0;
-		width: 100%;
-		height: 100%;
-		padding-bottom: 120px;
-	    background-color: rgba(210, 180, 140, 0.47);
-	}
-	
-	.questionContainer {
-		position: fixed;
-		background-color: initial;
-		padding-top: 120px;
-	}
-	
-	.questionContainer .picture {
-		padding-top: 50px;
-	}
-	
-	.bool_answer {
-		height: 70px;
-		line-height: 70px;
-	}
-	
-	.button, button {
-		height: 70px;
-		margin-top: 20px;
-	}
-	
-	.pictureAnswers {
-		margin: 0 40px;
-		height: initial;
-	}
-	
-	.pictureAnswerContainer {
-		width: 60%;
-	}
+  .questionContainer {
+    font-size: 1.2em;
+  }
+
+  .button, button {
+    width: 150px;
+  }
+
+  .homeContainer .quizChoices {
+    flex-direction: column;
+    padding-bottom: 60px;
+  }
+
+  .quizChoices .quiz {
+    width: auto;
+  }
+
+  .right-side {
+    display: none;
+  }
+
+  .questionHeader {
+    height: 120px;
+    line-height: 120px;
+    margin-top: -120px;
+  }
+
+  .questionHeader .topLeft {
+    position: static;
+    height: 70px;
+    line-height: 70px;
+    font-size: 1em;
+  }
+
+  .questionHeader .topRight {
+    position: static;
+    height: 50px;
+    line-height: 50px;
+  }
+
+  .questionBody {
+    overflow-y: auto;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 120px;
+    background-color: rgba(210, 180, 140, 0.47);
+  }
+
+  .questionContainer {
+    position: fixed;
+    background-color: initial;
+    padding-top: 120px;
+  }
+
+  .questionContainer .picture {
+    padding-top: 50px;
+  }
+
+  .bool_answer {
+    height: 70px;
+    line-height: 70px;
+  }
+
+  .button, button {
+    height: 70px;
+    margin-top: 20px;
+  }
+
+  .pictureAnswers {
+    margin: 0 40px;
+    height: initial;
+  }
+
+  .pictureAnswerContainer {
+    width: 60%;
+  }
 }
