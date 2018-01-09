@@ -16,7 +16,7 @@ angular.module('pictureQuiz')
       }
 
       $animateCss(elem, {
-        event: 'enter',
+        'event': 'enter',
         structural: true,
         addClass: className
       }).start();
