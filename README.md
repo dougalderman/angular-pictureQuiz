@@ -1,21 +1,21 @@
-#Angular Picture Quiz
+# Angular Picture Quiz
 
 This app is a online quiz with the option of using pictures as questions or answers. It allows for multiple choice, short answer, and true-false types questions. There are 3 text-only questions types, 3 picture questions, and one picture answer multiple choice, for a total of 7 question types. Quizzes are defined in json configuration files. This is strictly a front-end Angular app, that can be served as static HTML.
 
-##Getting Started
+## Getting Started
 ### Prerequisites
 - Familiarity with JSON file format to build quizzes.
 - Familiarity with Angular JS ver 1 and HTML / CSS helpful if you want to modify code or integrate into another site.
 
-###Installation
+### Installation
  git clone https://github.com/dougalderman/angular-pictureQuiz.git
 
-##Design Goals
+## Design Goals
 This app is intended to provide the user with an online picture quiz experience. It can be used on its own or integrated into a separate site. A possible use case is an addition to an informational website that will provide interactivity without requiring login or server code.
 
-##Detailed Usage
+## Detailed Usage
 
-###JSON confiration files
+### JSON confiration files
 
 A quizzes.json configuration file is the master configuration which lists the different quizzes available and some basic information about the quizzes. Here's an example of a quizzes.json file with 3 quizzes:
 
@@ -100,7 +100,7 @@ There are 4 configuration options:
 
 
 
-###Angular Code
+### Angular Code
 
 This app uses only front-end Javascript frameworks Angular 1.x and Angular UI Router, and can be served as static HTML. There are 3 routes and 8 directives.
 
@@ -159,7 +159,7 @@ angular.module('pictureQuiz', ['ui.router', 'ngAnimate'])
 As can be seen from the code, each route has its own controller and templateUrl. 
 
 
-###Home Route
+### Home Route
 
 The home controller and template are fairly straightforward. The controller calls a service function to perform an $http request to read the quizzes.json file. It then displays the quiz image, title and description in flex boxes. 
 
@@ -168,7 +168,7 @@ The home controller and template are fairly straightforward. The controller call
 It directs the user to choose a quiz. When the user clicks on the quiz picture, it does a ui-sref link, passing to the quiz controller the brief name of the quiz. 
 
 
-###Quiz Route
+### Quiz Route
 
 The quiz controller first calls a service function to do an $http request to read the name.json file, where 'name' is the quiz name passed as a parameter to this route. It then calls a processQuiz() function which sets some $scope variables. The quiz template is a series of 7 element directives. The directives are set to only ng-show when the question type is set to that question type. Here is the beginning part of the quizTmpl.html file:
 
@@ -316,7 +316,7 @@ Here is a screen shot of an example of the picture answer question type in the U
 
 ![Picture Answer Example](https://github.com/dougalderman/angular-pictureQuiz/blob/master/images/Picture_Answer_Example.jpg)
 
-###Results Route
+### Results Route
 
 After completing all the questions in the quiz, a $state.go statement() changes to the results route. The quiz route passes the following parameters to the results route: title, secondsElapsed, userCorrectArray, and percentGreatJob. resultsCtrl.js calculates the total number of questions from the length of userCorrectArray. It calculates the percent correct by calculating how many elements in userCorrectArray are true (set by the individual directives in the quiz route). 
 
@@ -402,5 +402,5 @@ The user sees the giphy for 7 seconds, as it gradually becomes rotated until it 
 ![Sample Results Screen](https://github.com/dougalderman/angular-pictureQuiz/blob/master/images/Sample_Results_Screen.jpg)
 
 
-##License
+## License
 This code is open source under the MIT license:  https://opensource.org/licenses/MIT
