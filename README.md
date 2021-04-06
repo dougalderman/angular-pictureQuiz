@@ -4,7 +4,7 @@ See Demo Version at http://dougalderman.github.io/angular-pictureQuiz
 
 ## Description
 
-This app is a online quiz with the option of using pictures as questions or answers. It allows for multiple choice, short answer, and true-false types questions. There are 3 text-only questions types, 3 picture questions, and one picture answer multiple choice, for a total of 7 question types. Quizzes are defined in json configuration files. This is strictly a front-end Angular app, that can be served as static HTML. Demo
+This app is a online quiz with the option of using pictures as questions or answers. It allows for multiple choice, short answer, and true-false types questions. There are 3 text-only questions types, 3 picture questions, and one picture answer multiple choice, for a total of 7 question types. Quizzes are defined in json configuration files. This is strictly a front-end Angular app, that can be served as static HTML.
 
 ## Getting Started
 ### Prerequisites
