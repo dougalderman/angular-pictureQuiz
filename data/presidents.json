@@ -4,8 +4,7 @@
   "config": {
       "randomizeQuestionSequence": false,
       "autoSubmit": false,
-	  "percentGreatJob": 60,
-	  "rightSide": "giphy"
+	  "percentGreatJob": 70
   },
   "questions": [
     {
